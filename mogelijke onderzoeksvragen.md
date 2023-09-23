@@ -36,3 +36,7 @@ This paper reports on an adaptation of YOLOv7 to improve detection of pedestrian
 How does a fluorescent vest affect object detection in YOLOv7 (without adaptations)?   
 
 related : how does wearing a facemask affect object detection?
+
+### != object detection?
+
+YOLOv8 supports multiple vision tasks such as object detection, segmentation, pose estimation, tracking, and classification
