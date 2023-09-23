@@ -34,3 +34,5 @@ This paper reports on an adaptation of YOLOv7 to improve detection of pedestrian
 - Persons not wearing a fluorescent vest
 
 How does a fluorescent vest affect object detection in YOLOv7 (without adaptations)?   
+
+related : how does wearing a facemask affect object detection?
