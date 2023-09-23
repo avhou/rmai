@@ -23,3 +23,7 @@ Same kind of objects but colored differently.
 ### Can seasons be detected from image background
 
 ### How does bias in training set influence outcome
+
+### How does fog affect object detection
+
+[YOLO-GW: Quickly and Accurately Detecting Pedestrians in a Foggy Traffic Environment](https://mdpi-res.com/sensors/sensors-23-05539/article_deploy/sensors-23-05539.pdf?version=1686649274)
