@@ -1,5 +1,9 @@
 ## Research question ideas
 
+### Can YOLO be trained such that it detects the difference between sea turtles and land turtles
+
+The challenge here could be that sea turtles and land turtles have a high degree of resemblance. Moreover I think that there are lots of pictures available online.
+
 ### Detecting single person vs persons in a crowd
 
 First version of YOLO had difficulties with this task. The underlying reason was that each grid in the YOLO architecture is designed for single object detection.
