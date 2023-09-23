@@ -11,3 +11,16 @@ Broadly three categories could be used:
 - Above horizon
 - Near horizon
 - Below horizon
+
+### Does variation in object shapes influence object detection
+
+Open versus closed books
+
+### Does variation in image coloring influence object detection
+
+Same kind of objects but colored differently.
+
+### Can seasons be detected from image background
+
+### How does bias in training set influence outcome
+
