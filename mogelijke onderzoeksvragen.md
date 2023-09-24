@@ -56,3 +56,24 @@ Research questions that you could address are :
 - Does it matter whether the target objects more commonly appears in the middle of the image or away from the middle? What is the influence of the variation in the distance (i.e., size in the image) towards the object in the image?
 - Does it matter how tight the bounding box is? Should one spend the extra time to get the bounding boxes just right, or is it better to annotate more images, but care less about the bounding box?
 - If the target object is partially occluded, should one annotate the entire region of where the object is in the image (including the occluded part) or just the visible part? How does this work for objects hidden behind a transparent object? Should these still be annotated for training?
+
+### discussion 20230924
+
+- variations in size of dataset and/or object type (filtered dataset)
+- variations in hyperparameters of training
+- assemble a custom dataset, select bounding box + label the images ourselves
+
+coco object types : 
+12/13 street signs/stop signs
+19/24 horse / zebra
+41/42 skateboard / surf board
+48/49/50 fork knife spoon
+78/79 microwave/oven
+
+research question :
+we investigate the classification of closely resembling object types.  
+variations in : 
+- training set size
+- hyperparameters (literature)
+- contrast / illumination / resolution
+- yolo versions?
