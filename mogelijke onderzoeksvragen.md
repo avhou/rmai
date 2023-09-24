@@ -44,3 +44,15 @@ related : how does wearing a facemask affect object detection?
 ### != object detection?
 
 YOLOv8 supports multiple vision tasks such as object detection, segmentation, pose estimation, tracking, and classification
+
+### textbook suggestions
+
+Research questions that you could address are :
+
+- What is the minimum number of images required for good training? Does this depend on the type of object that you are trying to track?
+- What is the influence of the variability of the object? When the goal is to detect one specific bowl in various contexts, will training be better than if you have to be able to detect different shapes of bowls?
+- What is the influence of the variability of the background of the object? If you always detect the same target object, does it matter in what contexts it appears?
+- What is the influence of the size of the training images? And the spatial resolution of the images? Or the contrast of the images?
+- Does it matter whether the target objects more commonly appears in the middle of the image or away from the middle? What is the influence of the variation in the distance (i.e., size in the image) towards the object in the image?
+- Does it matter how tight the bounding box is? Should one spend the extra time to get the bounding boxes just right, or is it better to annotate more images, but care less about the bounding box?
+- If the target object is partially occluded, should one annotate the entire region of where the object is in the image (including the occluded part) or just the visible part? How does this work for objects hidden behind a transparent object? Should these still be annotated for training?
