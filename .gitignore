@@ -5,3 +5,5 @@ report/report.blg
 report/report.log
 report/report.out
 report/report.pdf
+**/venv
+code/data
