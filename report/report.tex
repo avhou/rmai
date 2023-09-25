@@ -1,0 +1,111 @@
+
+%%%%%%%% ICML 2021 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+
+% Recommended, but optional, packages for figures and better typesetting:
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{booktabs} % for professional tables
+\usepackage{multirow}
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2021} with \usepackage[nohyperref]{icml2021} above.
+\usepackage{hyperref}
+
+% Attempt to make hyperref and algorithmic work together better:
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+
+\usepackage[accepted]{icml2021}
+
+\icmltitlerunning{Your Assignment Title}
+
+\begin{document}
+
+\twocolumn[
+\icmltitle{Research Methods for Artificial Intelligence group assignment}
+
+\begin{icmlauthorlist}
+\icmlauthor{Frederik Lefever (Student Number 1)}{ou}
+\icmlauthor{Alexander Van Hecke (852631385)}{ou}
+\end{icmlauthorlist}
+
+\icmlaffiliation{ou}{Open Universiteit}
+\icmlcorrespondingauthor{}{}
+
+% You may provide any keywords that you
+% find helpful for describing your paper; these are used to populate
+% the "keywords" metadata in the PDF but will not be shown in the document
+\icmlkeywords{}
+
+\vskip 0.3in
+]
+
+\section{Brief Introduction}
+Write a brief introduction of your chosen assignment that provides an overview of task and the key ideas of the methods used.
+Report should be at most five (5) pages long excluding references.
+You can include a list of research questions or summary list of findings at the end of the introduction.
+
+\begin{enumerate}
+    \item Research Question 1
+    \item Research Question 2
+    \item Research Question 3
+\end{enumerate}
+
+\section{Methods}
+Describe the methods used. How it works. It can include algorithms, system descriptions, new language constructs, analyses, etc.
+Provide diagrams to help in the discussion. Figure \ref{fig:one-col-figure} and Figure \ref{fig:two-col-figure} shows an example of a one-column figure and a two-column figure. 
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figures/example_plot.png}
+    \caption{One-column figure that explains the steps or framework of your method / model.}
+    \label{fig:one-col-figure}
+\end{figure}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{figures/example_pipeline.png}
+    \caption{One-column figure that explains the steps or framework of your method / model.}
+    \label{fig:two-col-figure}
+\end{figure*}
+
+\section{Experimental Results}
+\subsection{Datasets}
+Include a description of the data used, what it contains, train test splits, etc.
+\subsection{Implementation Details}
+Include a description of the design choices, hyperparameters, and other implementation specific details.
+
+\subsection{Results}
+Analyze and discuss your results. Table \ref{tab:example-table} shows an example of a table.
+Include plots and visualizations such as Figure \ref{fig:one-col-figure}.
+
+\subsection{Discussion}
+Additionally, you can include a separate discussion section in which you summarize the results, indicate possible limitations of your work, and provide suggestions for future research.
+
+\subsection{Citing references}
+LaTeX manages the citations for you. You simply have to add the bibtex entry for the reference in the references.bib file and you can use the citation in the paper \cite{langley00}. You can also cite multiple references in one command \cite{DudaHart2nd,Newell81,kearns89}. The bibtex entries for a paper can be obtained in websites such as google scholar or dblp.
+
+\begin{table}[h]
+    \centering
+    \label{tab:example-table}
+    \caption{Example Table}
+    \begin{tabular}{lllll}
+        \toprule
+        \multirow{2}{*}{Models} & \multicolumn{3}{c}{Metric 1} & Metric 2\\
+        \cmidrule{2-4} \cmidrule{5-5} \\
+        {} & precision & recall & F-score  & R@10 \\
+        \midrule
+        model 1 & 0.67  & 0.8 & 0.729  & 0.75 \\
+        model 2 & 0.8 & 0.9 & 0.847 & 0.85 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\bibliography{references}
+\bibliographystyle{icml2021}
+
+
+\end{document}
