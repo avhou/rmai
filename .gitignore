@@ -1,9 +1,15 @@
 .idea
-report/report.aux
+report/*.aux
 report/report.bbl
 report/report.blg
 report/report.log
 report/report.out
 report/report.pdf
+proposal/*.aux
+proposal/proposal.bbl
+proposal/proposal.blg
+proposal/proposal.log
+proposal/proposal.out
+proposal/proposal.pdf
 **/venv
 code/data
