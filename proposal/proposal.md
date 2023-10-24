@@ -5,7 +5,7 @@ subtitle: "Research Proposal RMAI 2023"
 author: "Alexander Van Hecke (852631385), Frederik Lefever (???)"
 abstract: "Vehicle detection is an important aspect of traffic monitoring and surveillance.  Detection of vehicles can be done efficiently using the YOLOv8 model, however the classification of vehicles in images taken from traffic surveillance cameras can be difficult due to adverse weather conditions like snow, rain or fog.  The classification rate (mAP) can be improved by augmentation of the training data set.  Images of the training dataset are stochastically modified by an image augmentation pipeline adding adverse weather conditions.  This allows us to generate a larger training set, which in turn yields better results (TODO) "
 institute: "OU"
-date: "24/10/2023"
+date: \today
 ---
 # Introduction
 
