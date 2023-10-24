@@ -54,9 +54,9 @@ op het einde de 4 scenarios met elkaar vergelijken en zien wat de verschillen zi
 
 # Proposed time line
 
-stappen detailleren, zie gantt chart
+stappen detailleren, zie Figure \ref{timeline}.
 
-![Proposed time line](proposal-timing.png "Proposed time line")
+![Proposed time line\label{timeline}](proposal-timing.png "Proposed time line")
 
 # Bibliography
 
