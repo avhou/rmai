@@ -1,0 +1,13 @@
+@startgantt
+[Image augmentation] lasts 6 days
+[Train model] lasts 2 days
+[Evaluate model] lasts 2 days
+Project starts 2023-11-01
+saturday are closed
+sunday are closed
+
+[Image augmentation] starts 2023-11-01
+[Image augmentation] is colored in Lavender/LightBlue
+[Train model] starts at [Image augmentation]'s end
+[Evaluate model] starts at [Train model]'s end
+@endgantt
