@@ -40,6 +40,11 @@ wat vragen we ons af :
   - wel augmentation doen op de trainingsset en geen augmentation op de evaluatie set?
   - wel augmentation doen op de trainingsset en ook augmentation doen op de evaluatie set?
 
+dit lijkt te verwijzen naar een "evaluating and acting" research question (LU4 p91).  Wat zijn de voor- en nadelen van het gebruik van augmented images?  Hoe effectief is het gebruik van augmented imags?
+
+formuleren van een of meerdere hypotheses.  bv we veronderstellen dat modellen die getrained zijn met augmented images ook beter zullen werken voor het evalueren van augmented images.
+
+opgelet : bij formuleren hypothese vermelden op welke manier we dit gaan evalueren / meten (bv accuracy, recall, precision, ...)
 # Research methods
 
 opzetten van volgende scenarios : 
