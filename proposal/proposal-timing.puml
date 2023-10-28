@@ -1,13 +1,22 @@
 @startgantt
-[Image augmentation] lasts 6 days
-[Train model] lasts 2 days
-[Evaluate model] lasts 2 days
+[Image augmentation] lasts 14 days
+[Train model A] lasts 5 days
+[Train model B] lasts 5 days
+[Evaluate model A] lasts 5 days
+[Evaluate model B] lasts 5 days
+[Data analysis] lasts 14 days
+[Write report] lasts 21 days
 Project starts 2023-11-01
 saturday are closed
 sunday are closed
 
 [Image augmentation] starts 2023-11-01
 [Image augmentation] is colored in Lavender/LightBlue
-[Train model] starts at [Image augmentation]'s end
-[Evaluate model] starts at [Train model]'s end
+[Train model A] starts at [Image augmentation]'s end
+[Evaluate model A] starts at [Train model A]'s end
+[Train model B] starts at [Image augmentation]'s end
+[Evaluate model B] starts at [Train model B]'s end
+[Data analysis] starts at [Evaluate model A]'s end
+[Data analysis] starts at [Evaluate model B]'s end
+[Write report] starts at [Data analysis]'s end
 @endgantt
