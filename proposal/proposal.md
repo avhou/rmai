@@ -5,7 +5,7 @@ subtitle: "Research Proposal RMAI 2023"
 author: 
 - Alexander Van Hecke (852631385)
 - Frederik Lefever (???)
-abstract: "Vehicle detection is an important aspect of traffic monitoring and surveillance.  In this study we investigate whether the use of image augmentation can increase the detection of vehicles in adverse weather conditions.  The study will train two YOLOv8 models, one using augmented images and another using non augmented images.  The hypothesis that there is no difference in vehicle detection in adverse weather effects between the different models will be tested by comparing the mAP, recall and precision of the models when validating against an adverse weather effects validation dataset"
+abstract: "Vehicle detection is an important aspect of traffic monitoring and surveillance.  In this study we investigate whether the use of image augmentation can increase the detection of vehicles in adverse weather conditions.  The study will train two YOLOv8 models, one using augmented images and another using non augmented images.  The hypothesis that there is no difference in vehicle detection in adverse weather effects between the different models will be tested by comparing the mAP at 0.50 IoU, recall and precision of the models when validating against an adverse weather effects validation dataset"
 institute: "Open University of The Netherlands"
 date: \today
 ---
@@ -13,13 +13,16 @@ date: \today
 
 Het accuraat kunnen monitoren van de verkeersdrukte op autosnelwegen is van groot belang om verkeersstromen te kunnen sturen.  Wanneer grote drukte gedetecteerd wordt, kunnen deze data ter beschikking gesteld worden van leveranciers van navigatieproducten, die op hun beurt hun gebruikers kunnen waarschuwen om hun route aan te passen.
 
-Op autosnelwegen zijn typisch op een aantal punten vaste camera's opgesteld die de verkeersstromen kunnen monitoren.  De beelden van deze camera's kunnen gebruik maken van object recognition om een telling te doen van het aantal voertuigen.
+Op autosnelwegen zijn typisch op een aantal punten vaste camera's opgesteld die de verkeersstromen kunnen monitoren.  De beelden van deze camera's kunnen gebruik maken van object recognition om een telling te doen van het aantal voertuigen.  Ook bij slechte weersomstandigheden zoals regen, sneeuw en mist moeten deze tellingen accuraat kunnen gebeuren.
 
-Het herkennen van voertuigen wordt echter bemoeilijkt bij slechte weersomstandigheden zoals regen, sneeuw en mist.  
+YOLOv8 maakt gebruik van een neural netwerk om objecten te herkennen.  Het doel is om dit netwerk zo generiek mogelijk te trainen, zodat het model zowel in goede als in slechte weersomstandigheden voertuigen kan herkennen.
 
-Object herkenning gebeurt typisch door het trainen van een neural network.  Zo'n network moet in alle weersomstandigheden zo goed mogelijk voertuigen herkennen.  Het model moet dus zo generiek mogelijk getraind worden.
+In [2], [7] wordt het gebruik van image augmentation bij het trainen van het neural netwerk beschreven als een manier om het getrainde model beter te laten generaliseren.  Bij image augmentation worden wijzigingen aangebracht aan images.  Voorbeelden van wijzigingen die kunnen aangebracht worden zijn het roteren of croppen van images, het toevoegen van ruis op  foto's, het toevoegen van smear maar ook het artificieel introduceren van slechte weersomstandigheden zoals regen of mist.
 
-In [2], [7] wordt image augmentation bij het trainen van het model beschreven als een manier om het model beter te laten generaliseren.  Hierbij wordt de images van de training set aangepast met gesimuleerde slechte weersomstandigheden, waardoor de accuracy in het herkennen van voertuigen in slechte weersomstandigheden verbetert.  Verder is het gebruik van image augmentation ook mogelijk wanneer er slechts weinig images beschikbaar zijn in training of validatiesets.  In zo'n scenario kan image augmentation gebruikt worden elk bestand van de dataset te augmenten zodat zowel de originele als de augmented images kunnen gebruikt worden bij het trainen van het model.
+Image augmentation kan op 2 manieren helpen bij het trainen van een neural network : 
+
+- indien er slechts weinig bestanden beschikbaar zijn voor het trainen kan image augmentation gebruikt worden om het aantal bestanden te verhogen.  Elk trainingsbestand kan dan 1 of meerdere keren aangepast worden en in gewijzigde en niet-gewijzigde vorm aan het neurale network gevoed worden.
+- voor het verbeteren van het generaliseren van het neuraal netwerk.  Doordat de trainingsbestanden meer ruis en onbelangrijke details bevatten dan wanneer deze niet zouden gewijzigd zijn, wordt het neural network gedwongen om enkel te focussen op de relevante details en de noise te filteren.  Dit kan leiden tot een betere accuracy in het herkennen van voertuigen in slechte weersomstandigheden.
 
 # Literature review
 
@@ -29,12 +32,14 @@ Het gebruik van image augmentation voor het trainen van deep learning modellen w
 
 Het gebruik van het YOLO framework voor (real-time) vehicle detection wordt besproken in [5], [11], [12], [14], [15].  Het gebruik van YOLO en image augmentation voor het detecteren van voertuigen in adverse weather effects wordt besproken in [4], [8??], [12], [14], [17], [19??], [21]
 
+-- VERWIJDEREN
 zie zotero.  verwijzen naar : 
 
 - image augmentation : voordelen ervan
 - yolo algemeen
 - yolo specifiek object detection
 - eerder uitgevoerde onderzoeken naar image augmentation en de effecten ervan
+-- EINDE VERWIJDEREN
 
 # Research questions
 
@@ -42,7 +47,7 @@ In dit onderzoek willen we een model trainen dat in staat is om vehicles te dete
 
 Concreet willen we kijken wat de voor- en nadelen van het gebruik van augmented images zijn voor het detecteren van voertuigen in images met adverse weather effects.  Verder willen we nagaan hoe effectief het gebruik van augmented images is.
 
-RQ1 : hier in 1 zin te formuleren
+RQ1 : Helpt image augmentation van trainingsbestanden om de accuracy te verhogen bij detectie van voertuigen in slechte weersomstandigheden?
 
 We bekijken volgende scenarios : 
 
@@ -54,6 +59,7 @@ De images zullen augmented worden met een combinatie van augmentation techniques
 We formuleren de volgende null hypothesis : er is geen verschil in mAP, recall en precision (???) bij het detecteren van vehicles tussen een YOLO model dat getraind werd met non-augmented images en een YOLO model dat getraind wordt met augmented images. 
 
 
+-- VERWIJDEREN
 wat vragen we ons af : 
 
 - in welke mate wijzigt de accuracy van detectie van vehicles als we : 
@@ -64,6 +70,7 @@ wat vragen we ons af :
 dit lijkt te verwijzen naar een "evaluating and acting" research question (LU4 p91).  Wat zijn de voor- en nadelen van het gebruik van augmented images?  Hoe effectief is het gebruik van augmented imags?
 
 formuleren van een of meerdere hypotheses.  bv we veronderstellen dat modellen die getrained zijn met augmented images ook beter zullen werken voor het evalueren van augmented images.
+-- EINDE VERWIJDEREN
 
 # Research methods
 
@@ -96,10 +103,10 @@ In model B zullen we dezelfde images selecteren als in model A, maar bij sommige
 
 De data analyse zal gebeuren in python.  De focus zal liggen op visualisatie van de performantie van de verschillende modellen, alsook op statistische vergelijkingen (t-tests) om te bepalen of eventueel geobserveerde verschillen statistisch significant zijn.  In het bijzonder zullen volgende analyses gebeuren : 
 
-RQ1 : berekenen van mAP, precision en recall tussen model A en model B en t-tests zullen gebruikt worden om te bepalen of de eventueel geobserveerde verschillen statistisch significant zijn.
+RQ1 : berekenen van mAP at 0.50 IoU, precision en recall tussen model A en model B en t-tests zullen gebruikt worden om te bepalen of de eventueel geobserveerde verschillen statistisch significant zijn.
 
 
-OLD : 
+-- VERWIJDEREN
 opzetten van volgende scenarios : 
 
 - baseline : geen augmentation in training, geen augmentation in evaluatie
@@ -109,6 +116,7 @@ opzetten van volgende scenarios :
 
 telkens trainen van model, evaluatie doen, statistieken berekenen 
 op het einde de 4 scenarios met elkaar vergelijken en zien wat de verschillen zijn
+-- EINDE VERWIJDEREN
 
 # Proposed time line
 
@@ -118,9 +126,11 @@ Eerst zal de nodige image augmentation van de trainingssets opgezet worden.  Daa
 
 # TODO
 - zie proposal Frouke.  zij spreekt al meteen over de studie in abstract en ook de hypothese. zie ook opmerking over hoe gaan we juist evalueren?
+- in het voorstel van Frouke (en in haar opmerkingen) is er geen aparte literature review sectie.  intro + literature review zitten in een Background sectie.
 - misschien moeten we nog een paper of uitleg doen rond het meten van accuracy van YOLO modellen, bv wat is mAP, ...
-- nadenken over hoe we juist gaan evalueren in onze null hypothesis.bij formuleren hypothese vermelden op welke manier we dit gaan evalueren / meten (bv accuracy, recall, precision, ...)
+- nadenken over hoe we juist gaan evalueren in onze null hypothesis.bij formuleren hypothese vermelden op welke manier we dit gaan evalueren / meten (bv accuracy, recall, precision, ...).  opgelet, het is niet juist om te spreken over mAP.  dit moet iets zijn als mAP at 0.50 IoU
 - moet er een risk sectie opgenomen worden?  bv spreken over vinden van te weinig images, van te weinig images met adverse weather conditions
+- wat is het verschil tussen detecteren en valideren?
 
 # Bibliography
 
