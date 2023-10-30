@@ -1,0 +1,677 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{bw1x-yh39-20}{data}{}
+      \name{author}{2}{}{%
+        {{hash=8b476e6ec9e3f16db852ba85076a30e9}{%
+           family={A.\bibnamedelimi KENK},
+           familyi={A\bibinitperiod\bibinitdelim K\bibinitperiod},
+           given={Mourad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9806239e5a4ff26eb47a6b160c8faffd}{%
+           family={Hassaballah},
+           familyi={H\bibinitperiod},
+           given={Mahmoud},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE Dataport}%
+      }
+      \strng{namehash}{95c0992d55aadea8669c6bb5050fbce5}
+      \strng{fullhash}{95c0992d55aadea8669c6bb5050fbce5}
+      \strng{bibnamehash}{95c0992d55aadea8669c6bb5050fbce5}
+      \strng{authorbibnamehash}{95c0992d55aadea8669c6bb5050fbce5}
+      \strng{authornamehash}{95c0992d55aadea8669c6bb5050fbce5}
+      \strng{authorfullhash}{95c0992d55aadea8669c6bb5050fbce5}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{DAWN: Vehicle Detection in Adverse Weather Nature}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.21227/bw1x-yh39
+      \endverb
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.21227/bw1x-yh39
+      \endverb
+      \verb{url}
+      \verb https://dx.doi.org/10.21227/bw1x-yh39
+      \endverb
+    \endentry
+    \entry{daoKernelTheoryModern2019}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=ede2395a7f566a456448fcb5f8222c99}{%
+           family={Dao},
+           familyi={D\bibinitperiod},
+           given={Tri},
+           giveni={T\bibinitperiod}}}%
+        {{hash=aa9ec56190423bb01ead50d96b94ba93}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4b7fea39f8ec2c45c82e6fc7cb769600}{%
+           family={Ratner},
+           familyi={R\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=98d3c657bc7439fa35514a8b27fb273c}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Virginia},
+           giveni={V\bibinitperiod}}}%
+        {{hash=9917c9e093523e98075418d1f1e4e20d}{%
+           family={Sa},
+           familyi={S\bibinitperiod},
+           given={Chris\bibnamedelima De},
+           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=34d18a316c191e8c4da2a4998c4a36dd}{%
+           family={Re},
+           familyi={R\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{c6e8806a86a2e83c272c16e8d7d4b3c0}
+      \strng{fullhash}{490e6d9abfb06b1b0f653c7b22400798}
+      \strng{bibnamehash}{c6e8806a86a2e83c272c16e8d7d4b3c0}
+      \strng{authorbibnamehash}{c6e8806a86a2e83c272c16e8d7d4b3c0}
+      \strng{authornamehash}{c6e8806a86a2e83c272c16e8d7d4b3c0}
+      \strng{authorfullhash}{490e6d9abfb06b1b0f653c7b22400798}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Data augmentation, a technique in which a training set is expanded with class-preserving transformations, is ubiquitous in modern machine learning pipelines. In this paper, we seek to establish a theoretical framework for understanding data augmentation. We approach this from two directions: First, we provide a general model of augmentation as a Markov process, and show that kernels appear naturally with respect to this model, even when we do not employ kernel classification. Next, we analyze more directly the effect of augmentation on kernel classifiers, showing that data augmentation can be approximated by first-order feature averaging and second-order variance regularization components. These frameworks both serve to illustrate the ways in which data augmentation affects the downstream learning model, and the resulting analyses provide novel connections between prior work in invariant kernels, tangent propagation, and robust optimization. Finally, we provide several proof-of-concept applications showing that our theory can be useful for accelerating machine learning workflows, such as reducing the amount of computation needed to train using augmented data, and predicting the utility of a transformation prior to training.}
+      \field{booktitle}{Proceedings of the 36th {{International Conference}} on {{Machine Learning}}}
+      \field{issn}{2640-3498}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{title}{A {{Kernel Theory}} of {{Modern Data Augmentation}}}
+      \field{urlday}{26}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{1528\bibrangedash 1537}
+      \range{pages}{10}
+      \verb{file}
+      \verb C:\Users\u0129016\Zotero\storage\YW6K65PM\Dao et al. - 2019 - A Kernel Theory of Modern Data Augmentation.pdf
+      \endverb
+      \keyw{Data Augmentation Theory}
+    \endentry
+    \entry{yolov8_ultralytics}{software}{}
+      \name{author}{3}{}{%
+        {{hash=c5c5e5cd7f4f477f617289b32613deb0}{%
+           family={Jocher},
+           familyi={J\bibinitperiod},
+           given={Glenn},
+           giveni={G\bibinitperiod}}}%
+        {{hash=ec281637802454e8df4de72f3b1ee401}{%
+           family={Chaurasia},
+           familyi={C\bibinitperiod},
+           given={Ayush},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b8739ebbf3f871d471b6720a02ed541f}{%
+           family={Qiu},
+           familyi={Q\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{fullhash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{bibnamehash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{authorbibnamehash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{authornamehash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{authorfullhash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Ultralytics YOLOv8}
+      \field{version}{8.0.0}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://github.com/ultralytics/ultralytics
+      \endverb
+      \verb{url}
+      \verb https://github.com/ultralytics/ultralytics
+      \endverb
+    \endentry
+    \entry{imgaug}{software}{}
+      \name{author}{1}{}{%
+        {{hash=3509a3d5fa2c5f08d92965a1f7d95f0b}{%
+           family={Jung},
+           familyi={J\bibinitperiod},
+           given={Alexander\bibnamedelima B.},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{3509a3d5fa2c5f08d92965a1f7d95f0b}
+      \strng{fullhash}{3509a3d5fa2c5f08d92965a1f7d95f0b}
+      \strng{bibnamehash}{3509a3d5fa2c5f08d92965a1f7d95f0b}
+      \strng{authorbibnamehash}{3509a3d5fa2c5f08d92965a1f7d95f0b}
+      \strng{authornamehash}{3509a3d5fa2c5f08d92965a1f7d95f0b}
+      \strng{authorfullhash}{3509a3d5fa2c5f08d92965a1f7d95f0b}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{imgaug}}
+      \field{version}{0.4.0}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://github.com/aleju/imgaug
+      \endverb
+      \verb{url}
+      \verb https://github.com/aleju/imgaug
+      \endverb
+    \endentry
+    \entry{kumarObjectDetectionAdverse2023}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4dc365a8a402c108b1703f8a38e846cb}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Debasis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=20494673369ad83b785e456c7c5c6f4b}{%
+           family={Muhammad},
+           familyi={M\bibinitperiod},
+           given={Naveed},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{885dbc5f7dbe65438136c4a75e6a0031}
+      \strng{fullhash}{885dbc5f7dbe65438136c4a75e6a0031}
+      \strng{bibnamehash}{885dbc5f7dbe65438136c4a75e6a0031}
+      \strng{authorbibnamehash}{885dbc5f7dbe65438136c4a75e6a0031}
+      \strng{authornamehash}{885dbc5f7dbe65438136c4a75e6a0031}
+      \strng{authorfullhash}{885dbc5f7dbe65438136c4a75e6a0031}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{For autonomous driving, perception is a primary and essential element that fundamentally deals with the insight into the ego vehicle's environment through sensors. Perception is challenging, wherein it suffers from dynamic objects and continuous environmental changes. The issue grows worse due to interrupting the quality of perception via adverse weather such as snow, rain, fog, night light, sand storms, strong daylight, etc. In this work, we have tried to improve camera-based perception accuracy, such as autonomous-driving-related object detection in adverse weather. We proposed the improvement of YOLOv8-based object detection in adverse weather through transfer learning using merged data from various harsh weather datasets. Two prosperous open-source datasets (ACDC and DAWN) and their merged dataset were used to detect primary objects on the road in harsh weather. A set of training weights was collected from training on the individual datasets, their merged versions, and several subsets of those datasets according to their characteristics. A comparison between the training weights also occurred by evaluating the detection performance on the datasets mentioned earlier and their subsets. The evaluation revealed that using custom datasets for training significantly improved the detection performance compared to the YOLOv8 base weights. Furthermore, using more images through the feature-related data merging technique steadily increased the object detection performance.}
+      \field{issn}{1424-8220}
+      \field{journaltitle}{Sensors (Basel, Switzerland)}
+      \field{langid}{english}
+      \field{number}{20}
+      \field{title}{Object {{Detection}} in {{Adverse Weather}} for {{Autonomous Driving}} through {{Data Merging}} and {{YOLOv8}}}
+      \field{volume}{23}
+      \field{year}{2023}
+      \field{pages}{8471\bibrangedash}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.3390/s23208471
+      \endverb
+      \verb{file}
+      \verb C:\Users\u0129016\Zotero\storage\L65P4CXH\Kumar and Muhammad - 2023 - Object Detection in Adverse Weather for Autonomous.pdf
+      \endverb
+      \keyw{Data Augmentation Application}
+    \endentry
+    \entry{liVehicleDetectionFoggy2022}{article}{}
+      \name{author}{1}{}{%
+        {{hash=be6f1b6df7f1ddfafad18806238fa391}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{be6f1b6df7f1ddfafad18806238fa391}
+      \strng{fullhash}{be6f1b6df7f1ddfafad18806238fa391}
+      \strng{bibnamehash}{be6f1b6df7f1ddfafad18806238fa391}
+      \strng{authorbibnamehash}{be6f1b6df7f1ddfafad18806238fa391}
+      \strng{authornamehash}{be6f1b6df7f1ddfafad18806238fa391}
+      \strng{authorfullhash}{be6f1b6df7f1ddfafad18806238fa391}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Vehicle detection is the key to driverless technology. For safety, driverless technology requires extremely high accuracy and real-time for vehicle detection in different situations. In this paper, we study an enhanced YOLO -based algorithm for vehicle detection in foggy weather conditions. We add a dehazing module in the YOLO model for more information restoration, which is built by the multi-scale retinex with color restoration (MSRCR). And the enhanced model is trained with the augmentation data processed MSRCR for more stable performance. We evaluate our method in the public dataset, the results show the enhanced YOLO model has better performance than conventional YOLO in vehicle detection in foggy weather.}
+      \field{issn}{1742-6588, 1742-6596}
+      \field{journaltitle}{Journal of Physics: Conference Series}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{number}{1}
+      \field{title}{Vehicle Detection in Foggy Weather Based on an Enhanced {{YOLO}} Method}
+      \field{urlday}{23}
+      \field{urlmonth}{9}
+      \field{urlyear}{2023}
+      \field{volume}{2284}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \field{pages}{012015}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1742-6596/2284/1/012015
+      \endverb
+      \verb{file}
+      \verb C:\Users\u0129016\Zotero\storage\NV3UWSBG\Li - 2022 - Vehicle detection in foggy weather based on an enh.pdf
+      \endverb
+    \endentry
+    \entry{linMicrosoftCOCOCommon2015a}{misc}{}
+      \name{author}{10}{}{%
+        {{hash=08f925fe4692d130a1d7cb7d94483351}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Tsung-Yi},
+           giveni={T\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=d980bc6930f008a0fb5fa667785f2309}{%
+           family={Maire},
+           familyi={M\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=044d1db5259b74e4975282f599d8e767}{%
+           family={Belongie},
+           familyi={B\bibinitperiod},
+           given={Serge},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a5d50cf5c085cd3a323d68588dcb89c8}{%
+           family={Bourdev},
+           familyi={B\bibinitperiod},
+           given={Lubomir},
+           giveni={L\bibinitperiod}}}%
+        {{hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod}}}%
+        {{hash=797fc3624ba315db58eef7279ace5bf3}{%
+           family={Hays},
+           familyi={H\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e52876f830a8a20786ff3e4d7dd6f083}{%
+           family={Perona},
+           familyi={P\bibinitperiod},
+           given={Pietro},
+           giveni={P\bibinitperiod}}}%
+        {{hash=aedcd3831845183e070aef16857d83ea}{%
+           family={Ramanan},
+           familyi={R\bibinitperiod},
+           given={Deva},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0eae2d56a9cbb037c64028d6573877a7}{%
+           family={Zitnick},
+           familyi={Z\bibinitperiod},
+           given={C.\bibnamedelimi Lawrence},
+           giveni={C\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=ecd149fdcb3e0503881d49e545744c3d}{%
+           family={Dollár},
+           familyi={D\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{fullhash}{63d989c97b4964e8cb9e77f1dea6cd25}
+      \strng{bibnamehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{authorbibnamehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{authornamehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{authorfullhash}{63d989c97b4964e8cb9e77f1dea6cd25}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{We present a new dataset with the goal of advancing the state-of-the-art in object recognition by placing the question of object recognition in the context of the broader question of scene understanding. This is achieved by gathering images of complex everyday scenes containing common objects in their natural context. Objects are labeled using per-instance segmentations to aid in precise object localization. Our dataset contains photos of 91 objects types that would be easily recognizable by a 4 year old. With a total of 2.5 million labeled instances in 328k images, the creation of our dataset drew upon extensive crowd worker involvement via novel user interfaces for category detection, instance spotting and instance segmentation. We present a detailed statistical analysis of the dataset in comparison to PASCAL, ImageNet, and SUN. Finally, we provide baseline performance analysis for bounding box and segmentation detection results using a Deformable Parts Model.}
+      \field{eprintclass}{cs}
+      \field{eprinttype}{arxiv}
+      \field{month}{2}
+      \field{number}{arXiv:1405.0312}
+      \field{shorttitle}{Microsoft {{COCO}}}
+      \field{title}{Microsoft {{COCO}}: {{Common Objects}} in {{Context}}}
+      \field{urlday}{29}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.1405.0312
+      \endverb
+      \verb{eprint}
+      \verb 1405.0312
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\u0129016\\Zotero\\storage\\TZ9XBLA6\\Lin et al. - 2015 - Microsoft COCO Common Objects in Context.pdf;C\:\\Users\\u0129016\\Zotero\\storage\\LK82ZMHB\\1405.html
+      \endverb
+      \keyw{Computer Science - Computer Vision and Pattern Recognition}
+    \endentry
+    \entry{perezEffectivenessDataAugmentation2017}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=5d14c73e0ea9e2665d0f5a6daa866b12}{%
+           family={Perez},
+           familyi={P\bibinitperiod},
+           given={Luis},
+           giveni={L\bibinitperiod}}}%
+        {{hash=5d7f045e3b98936cc2c803d3519c6012}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{e5b22156b4f2a447e8a20b66ad7ff099}
+      \strng{fullhash}{e5b22156b4f2a447e8a20b66ad7ff099}
+      \strng{bibnamehash}{e5b22156b4f2a447e8a20b66ad7ff099}
+      \strng{authorbibnamehash}{e5b22156b4f2a447e8a20b66ad7ff099}
+      \strng{authornamehash}{e5b22156b4f2a447e8a20b66ad7ff099}
+      \strng{authorfullhash}{e5b22156b4f2a447e8a20b66ad7ff099}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, we explore and compare multiple solutions to the problem of data augmentation in image classification. Previous work has demonstrated the effectiveness of data augmentation through simple techniques, such as cropping, rotating, and flipping input images. We artificially constrain our access to data to a small subset of the ImageNet dataset, and compare each data augmentation technique in turn. One of the more successful data augmentations strategies is the traditional transformations mentioned above. We also experiment with GANs to generate images of different styles. Finally, we propose a method to allow a neural net to learn augmentations that best improve the classifier, which we call neural augmentation. We discuss the successes and shortcomings of this method on various datasets.}
+      \field{eprintclass}{cs}
+      \field{eprinttype}{arxiv}
+      \field{month}{12}
+      \field{number}{arXiv:1712.04621}
+      \field{title}{The {{Effectiveness}} of {{Data Augmentation}} in {{Image Classification}} Using {{Deep Learning}}}
+      \field{urlday}{23}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.1712.04621
+      \endverb
+      \verb{eprint}
+      \verb 1712.04621
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\u0129016\\Zotero\\storage\\2S8NA8UJ\\Perez and Wang - 2017 - The Effectiveness of Data Augmentation in Image Cl.pdf;C\:\\Users\\u0129016\\Zotero\\storage\\RCCNR86M\\1712.html
+      \endverb
+      \keyw{Computer Science - Computer Vision and Pattern Recognition,Data Augmentation Implementation,Data Augmentation Theory}
+    \endentry
+    \entry{shortenSurveyImageData2019}{article}{}
+      \name{author}{2}{}{%
+        {{hash=d49d1c5cbce775054678e29a462ca723}{%
+           family={Shorten},
+           familyi={S\bibinitperiod},
+           given={Connor},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c7e0de384e7d1be2ca29a338e7f5c047}{%
+           family={Khoshgoftaar},
+           familyi={K\bibinitperiod},
+           given={Taghi\bibnamedelima M.},
+           giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{dae7c2fd5449b2cabfe6d8cea2eebe96}
+      \strng{fullhash}{dae7c2fd5449b2cabfe6d8cea2eebe96}
+      \strng{bibnamehash}{dae7c2fd5449b2cabfe6d8cea2eebe96}
+      \strng{authorbibnamehash}{dae7c2fd5449b2cabfe6d8cea2eebe96}
+      \strng{authornamehash}{dae7c2fd5449b2cabfe6d8cea2eebe96}
+      \strng{authorfullhash}{dae7c2fd5449b2cabfe6d8cea2eebe96}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Deep convolutional neural networks have performed remarkably well on many Computer Vision tasks. However, these networks are heavily reliant on big data to avoid overfitting. Overfitting refers to the phenomenon when a network learns a function with very high variance such as to perfectly model the training data. Unfortunately, many application domains do not have access to big data, such as medical image analysis. This survey focuses on Data Augmentation, a data-space solution to the problem of limited data. Data Augmentation encompasses a suite of techniques that enhance the size and quality of training datasets such that better Deep Learning models can be built using them. The image augmentation algorithms discussed in this survey include geometric transformations, color space augmentations, kernel filters, mixing images, random erasing, feature space augmentation, adversarial training, generative adversarial networks, neural style transfer, and meta-learning. The application of augmentation methods based on GANs are heavily covered in this survey. In addition to augmentation techniques, this paper will briefly discuss other characteristics of Data Augmentation such as test-time augmentation, resolution impact, final dataset size, and curriculum learning. This survey will present existing methods for Data Augmentation, promising developments, and meta-level decisions for implementing Data Augmentation. Readers will understand how Data Augmentation can improve the performance of their models and expand limited datasets to take advantage of the capabilities of big data.}
+      \field{issn}{2196-1115}
+      \field{journaltitle}{Journal of Big Data}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{1}
+      \field{title}{A Survey on {{Image Data Augmentation}} for {{Deep Learning}}}
+      \field{urlday}{27}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{volume}{6}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{60}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1186/s40537-019-0197-0
+      \endverb
+      \verb{file}
+      \verb C:\Users\u0129016\Zotero\storage\VKGFSREN\Shorten and Khoshgoftaar - 2019 - A survey on Image Data Augmentation for Deep Learn.pdf
+      \endverb
+      \keyw{Data Augmentation Implementation,Data Augmentation Theory}
+    \endentry
+    \entry{songVisionbasedVehicleDetection2019}{article}{}
+      \name{author}{5}{}{%
+        {{hash=43777b68f3cae8a0d7bd9a5eb5086cea}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Huansheng},
+           giveni={H\bibinitperiod}}}%
+        {{hash=c7f2f7b8cbd13bc8ea0712a70bc2c3cd}{%
+           family={Liang},
+           familyi={L\bibinitperiod},
+           given={Haoxiang},
+           giveni={H\bibinitperiod}}}%
+        {{hash=ccd5bb4cb4b4d93223674a7010a91fa8}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Huaiyu},
+           giveni={H\bibinitperiod}}}%
+        {{hash=b3733e35e294409861bf8da49e6c89cb}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Zhe},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=476386122cfe6b03fede6e598c9c72ec}{%
+           family={Yun},
+           familyi={Y\bibinitperiod},
+           given={Xu},
+           giveni={X\bibinitperiod}}}%
+      }
+      \strng{namehash}{dabc13e707604eded62868a739a909df}
+      \strng{fullhash}{9e2c6e676c963541394cdecbb2ee927a}
+      \strng{bibnamehash}{dabc13e707604eded62868a739a909df}
+      \strng{authorbibnamehash}{dabc13e707604eded62868a739a909df}
+      \strng{authornamehash}{dabc13e707604eded62868a739a909df}
+      \strng{authorfullhash}{9e2c6e676c963541394cdecbb2ee927a}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Intelligent vehicle detection and counting are becoming increasingly important in the field of highway management. However, due to the different sizes of vehicles, their detection remains a challenge that directly affects the accuracy of vehicle counts. To address this issue, this paper proposes a vision-based vehicle detection and counting system. A new high definition highway vehicle dataset with a total of 57,290 annotated instances in 11,129 images is published in this study. Compared with the existing public datasets, the proposed dataset contains annotated tiny objects in the image, which provides the complete data foundation for vehicle detection based on deep learning. In the proposed vehicle detection and counting system, the highway road surface in the image is first extracted and divided into a remote area and a proximal area by a newly proposed segmentation method; the method is crucial for improving vehicle detection. Then, the above two areas are placed into the YOLOv3 network to detect the type and location of the vehicle. Finally, the vehicle trajectories are obtained by the ORB algorithm, which can be used to judge the driving direction of the vehicle and obtain the number of different vehicles. Several highway surveillance videos based on different scenes are used to verify the proposed methods. The experimental results verify that using the proposed segmentation method can provide higher detection accuracy, especially for the detection of small vehicle objects. Moreover, the novel strategy described in this article performs notably well in judging driving direction and counting vehicles. This paper has general practical significance for the management and control of highway scenes.}
+      \field{issn}{1866-8887}
+      \field{journaltitle}{European Transport Research Review}
+      \field{month}{12}
+      \field{number}{1}
+      \field{title}{Vision-Based Vehicle Detection and Counting System Using Deep Learning in Highway Scenes}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{volume}{11}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{51}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1186/s12544-019-0390-4
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\u0129016\\Zotero\\storage\\SAWVYBNR\\Song et al. - 2019 - Vision-based vehicle detection and counting system.pdf;C\:\\Users\\u0129016\\Zotero\\storage\\3BH4B72G\\s12544-019-0390-4.html
+      \endverb
+      \keyw{Highway management,Image segmentation,Vehicle counting,Vehicle dataset,Vehicle detection}
+    \endentry
+    \entry{stralenInfluenceAdverseWeather2015}{article}{}
+      \name{author}{3}{}{%
+        {{hash=d9156fdc1f7ec3414344a1dadca1b64f}{%
+           family={Stralen},
+           familyi={S\bibinitperiod},
+           given={Wouter\bibnamedelimb J.\bibnamedelimi H.},
+           giveni={W\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=dd89b4cb2a75189120bdc8580c6cdfed}{%
+           family={Calvert},
+           familyi={C\bibinitperiod},
+           given={Simeon\bibnamedelima C.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=1966acdf8207b12210be83c147037f79}{%
+           family={Molin},
+           familyi={M\bibinitperiod},
+           given={Eric\bibnamedelimb J.\bibnamedelimi E.},
+           giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Editorial Board EJTIR}%
+      }
+      \strng{namehash}{9f72c8d00b74649ec016e2c0bd59f552}
+      \strng{fullhash}{9f72c8d00b74649ec016e2c0bd59f552}
+      \strng{bibnamehash}{9f72c8d00b74649ec016e2c0bd59f552}
+      \strng{authorbibnamehash}{9f72c8d00b74649ec016e2c0bd59f552}
+      \strng{authornamehash}{9f72c8d00b74649ec016e2c0bd59f552}
+      \strng{authorfullhash}{9f72c8d00b74649ec016e2c0bd59f552}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Weather conditions are widely acknowledged to contribute to the occurrence of congestion on motorway traffic by influencing both traffic supply and traffic demand. To the best of our knowledge, this is the first paper that explicitly integrates supply and demand effects in predicting the influence of adverse weather conditions on the probability of occurrence of congestion. Traffic demand is examined by conducting a stated adaptation experiment, in which changes in travel choices are observed under adverse weather scenarios. Based on these choices, a Panel Mixed Logit model is estimated. Supply effects are taken into account by examining the influence of precipitation on motorway capacity. Based on the Product Limit Method, capacity distribution functions are estimated for dry weather, light rain and heavy rain. With the developed model to integrate the supply and demand effects breakdown probabilities can be calculated for any given traffic demand and capacity. The results show that rainfall leads to a significant increase in the probability of traffic breakdown at bottleneck locations. Interestingly the probability of a breakdown at these bottleneck locations is predicted to be slightly higher in light rain (98.7\%) than in heavy rain (95.7\%) conditions, which is the result of the higher traffic demand in light rain conditions. Based on the results presented in this paper, it can be recommended to always incorporate both supply and demand effects in the predictions of motorway breakdown probabilities due to adverse weather conditions to improve the validity of the predictions. ©{} 2015 Editorial Board EJTIR. All rights reserved.}
+      \field{issn}{1567-7141}
+      \field{journaltitle}{European Journal of Transport and Infrastructure Research}
+      \field{langid}{english}
+      \field{number}{4}
+      \field{title}{The Influence of Adverse Weather Conditions on Probability of Congestion on Dutch Motorways}
+      \field{volume}{15}
+      \field{year}{2015}
+      \verb{doi}
+      \verb 10.18757/ejtir.2015.15.4.3093
+      \endverb
+      \keyw{adverse weather conditions,Breakdown probability,Distribution functions,Earth,Life,Meteorology,Mobility,modal shift,motorway capacity,motorway congestion probability,motorway traffic dem,Probability,Rain,Reliable Mobility Systems,Smart Mobility,SMb,Social Sciences,Traffic,Traffic breakdown,Traffic congestion,Traffic control,Transportation engineering,Urban Mobility \& Environment}
+    \endentry
+    \entry{CVIU_UA-DETRAC}{article}{}
+      \name{author}{9}{}{%
+        {{hash=fa4f86f9e457ddf68bce586c7c36025e}{%
+           family={Wen},
+           familyi={W\bibinitperiod},
+           given={Longyin},
+           giveni={L\bibinitperiod}}}%
+        {{hash=9f9565bfd02af5460e9d6eede33ce873}{%
+           family={Du},
+           familyi={D\bibinitperiod},
+           given={Dawei},
+           giveni={D\bibinitperiod}}}%
+        {{hash=60cd72430896952375fa93d72938cac6}{%
+           family={Cai},
+           familyi={C\bibinitperiod},
+           given={Zhaowei},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=d106e766d9de3c78aab61ad86235b9f1}{%
+           family={Lei},
+           familyi={L\bibinitperiod},
+           given={Zhen},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=aca114589a4458e4a874ec58cbb82c39}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Ming{-}Ching},
+           giveni={M\bibinitperiod}}}%
+        {{hash=49f6ae8603076ada0a19e554a839fabf}{%
+           family={Qi},
+           familyi={Q\bibinitperiod},
+           given={Honggang},
+           giveni={H\bibinitperiod}}}%
+        {{hash=6e67f91751a11b8ca953263056f33b48}{%
+           family={Lim},
+           familyi={L\bibinitperiod},
+           given={Jongwoo},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bf7958a615b2cc8e72ff1d44e7c216cd}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Ming{-}Hsuan},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5cef96b8b133ad0bca30cac708a2d28a}{%
+           family={Lyu},
+           familyi={L\bibinitperiod},
+           given={Siwei},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{32f5bbcd95684739a8de4ae020b5bad4}
+      \strng{fullhash}{41b6527c2016b2e463736bc8399bae29}
+      \strng{bibnamehash}{32f5bbcd95684739a8de4ae020b5bad4}
+      \strng{authorbibnamehash}{32f5bbcd95684739a8de4ae020b5bad4}
+      \strng{authornamehash}{32f5bbcd95684739a8de4ae020b5bad4}
+      \strng{authorfullhash}{41b6527c2016b2e463736bc8399bae29}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Vision and Image Understanding}
+      \field{title}{{UA-DETRAC:} {A} New Benchmark and Protocol for Multi-Object Detection and Tracking}
+      \field{year}{2020}
+    \endentry
+    \entry{xuComprehensiveSurveyImage2023}{article}{}
+      \name{author}{4}{}{%
+        {{hash=4c0ebba2a8e2a0e80d9a07dfb24deec5}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Mingle},
+           giveni={M\bibinitperiod}}}%
+        {{hash=518bbfb5d98f734e4790a5606151dfb1}{%
+           family={Yoon},
+           familyi={Y\bibinitperiod},
+           given={Sook},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fb723834da9551d13188c208d3ff337a}{%
+           family={Fuentes},
+           familyi={F\bibinitperiod},
+           given={Alvaro},
+           giveni={A\bibinitperiod}}}%
+        {{hash=67c01633b9c19a747a0e5df3e35fa6ad}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Dong\bibnamedelima Sun},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{edb7d1ea91e86702483aa2b252a7c849}
+      \strng{fullhash}{fd2ab3b6f019a5e456b85829e0975ccc}
+      \strng{bibnamehash}{edb7d1ea91e86702483aa2b252a7c849}
+      \strng{authorbibnamehash}{edb7d1ea91e86702483aa2b252a7c849}
+      \strng{authornamehash}{edb7d1ea91e86702483aa2b252a7c849}
+      \strng{authorfullhash}{fd2ab3b6f019a5e456b85829e0975ccc}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Although deep learning has achieved satisfactory performance in computer vision, a large volume of images is required. However, collecting images is often expensive and challenging. Many image augmentation algorithms have been proposed to alleviate this issue. Understanding existing algorithms is, therefore, essential for finding suitable and developing novel methods for a given task. In this study, we perform a comprehensive survey of image augmentation for deep learning using a novel informative taxonomy. To examine the basic objective of image augmentation, we introduce challenges in computer vision tasks and vicinity distribution. The algorithms are then classified among three categories: model-free, model-based, and optimizing policy-based. The model-free category employs the methods from image processing, whereas the model-based approach leverages image generation models to synthesize images. In contrast, the optimizing policy-based approach aims to find an optimal combination of operations. Based on this analysis, we believe that our survey enhances the understanding necessary for choosing suitable methods and designing novel algorithms.}
+      \field{issn}{0031-3203}
+      \field{journaltitle}{Pattern Recognition}
+      \field{month}{5}
+      \field{title}{A {{Comprehensive Survey}} of {{Image Augmentation Techniques}} for {{Deep Learning}}}
+      \field{urlday}{23}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{volume}{137}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \field{pages}{109347}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.patcog.2023.109347
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\u0129016\\Zotero\\storage\\QGAXH3AQ\\Xu et al. - 2023 - A Comprehensive Survey of Image Augmentation Techn.pdf;C\:\\Users\\u0129016\\Zotero\\storage\\IUZQAZWM\\S0031320323000481.html
+      \endverb
+      \keyw{Computer vision,Data augmentation,Deep learning,Image augmentation,Image variation,Survey,Vicinity distribution}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
