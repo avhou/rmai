@@ -1,5 +1,6 @@
 @startgantt
-[Image augmentation] lasts 14 days
+[Dataset preparation] lasts 14 days
+[Image augmentation] lasts 1 days
 [Train model A] lasts 5 days
 [Train model B] lasts 5 days
 [Evaluate model A] lasts 5 days
@@ -10,7 +11,8 @@ Project starts 2023-11-01
 saturday are closed
 sunday are closed
 
-[Image augmentation] starts 2023-11-01
+[Dataset preparation] starts 2023-11-01
+[Image augmentation] starts at [Dataset preparation]'s end
 [Image augmentation] is colored in Lavender/LightBlue
 [Train model A] starts at [Image augmentation]'s end
 [Evaluate model A] starts at [Train model A]'s end

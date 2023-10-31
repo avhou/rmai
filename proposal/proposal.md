@@ -131,6 +131,7 @@ Eerst zal de nodige image augmentation van de trainingssets opgezet worden.  Daa
 - nadenken over hoe we juist gaan evalueren in onze null hypothesis.bij formuleren hypothese vermelden op welke manier we dit gaan evalueren / meten (bv accuracy, recall, precision, ...).  opgelet, het is niet juist om te spreken over mAP.  dit moet iets zijn als mAP at 0.50 IoU
 - moet er een risk sectie opgenomen worden?  bv spreken over vinden van te weinig images, van te weinig images met adverse weather conditions
 - wat is het verschil tussen detecteren en valideren?
+- ivm request question : willen we als baseline het standaard yolov8 model gebruiken of willen we het yolov8 model eerst nog specialiseren als vehicle model?
 
 # Bibliography
 
