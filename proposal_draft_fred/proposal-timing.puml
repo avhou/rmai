@@ -1,0 +1,23 @@
+@startgantt
+[Dataset preparation] lasts 7 days
+[Image augmentation] lasts 4 days
+[Train DETRAC_train (model RQ1)] lasts 5 days
+[Train DAWN_train (model RQ2)] lasts 5 days
+[Evaluate model RQ1] lasts 5 days
+[Evaluate model RQ2] lasts 5 days
+[Data analysis] lasts 14 days
+[Write report] lasts 21 days
+Project starts 2023-11-06
+saturday are closed
+sunday are closed
+
+[Dataset preparation] starts 2023-11-06
+[Image augmentation] starts at [Dataset preparation]'s end
+[Train DETRAC_train (model RQ1)] starts at [Image augmentation]'s end
+[Evaluate model RQ1] starts at [Train DETRAC_train (model RQ1)]'s end
+[Train DAWN_train (model RQ2)] starts at [Image augmentation]'s end
+[Evaluate model RQ2] starts at [Train DAWN_train (model RQ2)]'s end
+[Data analysis] starts at [Evaluate model RQ1]'s end
+[Data analysis] starts at [Evaluate model RQ2]'s end
+[Write report] starts at [Data analysis]'s end
+@endgantt
