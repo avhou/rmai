@@ -2,6 +2,7 @@
 \usepackage[backend=biber, style=numeric]{biblatex}
 \usepackage{paralist}
 \usepackage{hyperref}
+\usepackage{float}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \graphicspath{ {./images/} }
@@ -10,7 +11,7 @@
 \newtheorem{researchquestion}{RQ}
 
 %opening
-\title{
+\title{Research Proposal \\
 	A YOLOv8-based Analysis of Image Augmentation Techniques for Vehicle Detection in Adverse Weather Conditions}
 	\author{
 		Alexander Van Hecke \small(852631385) \and 
@@ -21,7 +22,7 @@
 \maketitle
 
 \begin{abstract}
-	Vehicle detection is an important aspect of semi-automated traffic monitoring and surveillance.  In this study we investigate whether the use of image augmentation can increase the accuracy of vehicle detection in adverse weather conditions.  The study will first evaluate whether the use of image augmentation to train a YOLO\small{v8} model increases accuracy compared to a baseline model.  The study will also evaluate whether the use of actual adverse weather condition images to train a YOLO\small{v8} model increases accuracy compared to the same baseline model.  Our hypothesis is that image augmentation can indeed be used to improve the accuracy of a YOLO\small{v8} model.
+	Vehicle detection is an important aspect of semi-automated traffic monitoring and surveillance.  We propose to investigate whether the technique of image augmentation can be used to increase the accuracy of vehicle detection in adverse weather conditions.  The study will evaluate whether the use of image augmentation to train a YOLO\small{v8} model increases accuracy compared to a baseline model.  We also propose to compare the effect of training with augmentated images to that of training with actual images of traffic in adverse weather conditions. To this extent we will train a YOLO\small{v8} model with actual images and compare with the same baseline model and the accuracy obtained from the first model. Our main hypothesis is that image augmentation can indeed be used to improve the accuracy of vehicle detection in adverse weather conditions. Our secondary hypothesis is that the accuracy of a model derived from augmented images falls within statistically insignificant margins when compared to a model obtained from actual images.  
 \end{abstract}
 
 \section{Introduction}
@@ -47,27 +48,27 @@
 
 \section{Research questions}
 
-	The image augmentation techniques described in the literature are numerous and varied, ranging from simple geometric transformations to the addition of noise and the changing of color, saturation and hue parameters. We propose to investigate the effect of thematic image augmentation consisting of the addition of rain, fog and snow to clear weather images. At the more general level, we aim to answer following questions:
+	The image augmentation techniques described in the literature are numerous and varied, ranging from simple geometric transformations to the addition of noise and the changing of color, saturation and hue parameters. We propose to investigate the effect of \textit{thematic} image augmentation consisting in the addition of rain, fog and snow to clear weather images. At the more general level, we aim to answer following questions:
 
 	\begin{researchquestion}
 		\label{rq1}
-		Given that the standard YOLO{\small v8} model is used as a comparative baseline and trained with thematically augmented images, will the resulting model then be more accurate as measured by mAP at 0.50-0.95 IoU in predicting the presence of vehicles in actual images of traffic in adverse weather conditions?
+		Given that the standard YOLO{\small v8} model is used as a comparative baseline and trained with thematically augmented images, will the resulting model then be more accurate as measured by the mean average precision (mAp) at 0.50-0.95 IoU, in predicting the location of vehicles in actual images of traffic in adverse weather conditions?
 	\end{researchquestion}
 
 	Furthermore, to appreciate the value of image augmentation in contexts where data is not necessarily scarce, we pose an additional question:
 	\begin{researchquestion}
 		\label{rq2}
-		Given that the standard YOLO{\small v8} model is used as a comparative baseline and trained with adverse weather condition images, will the resulting model then be more accurate as measured by mAP at 0.50-0.95 IoU in predicting the presence of vehicles in actual images of traffic in adverse weather conditions?
+		Given that the standard YOLO{\small v8} model is used as a comparative baseline and trained with adverse weather condition images, will the resulting model then be more accurate as measured by the mean average precision (mAP) at 0.50-0.95 IoU, in predicting the location of vehicles in actual images of traffic in adverse weather conditions?
 	\end{researchquestion}
 
 \section{Research method}
 \subsection{Measuring model accuracy}
 
-	To estimate the robustness of vehicle detection models, we use the mean average precision (mAP) at 0.50-0.95 IoU metric. The mAP at 0.50-0.95 IoU is an aggregate metric based on the confusion matrix, the intersection over union (IoU), recall and precision. We consider two relevant classes of vehicles, ``car'' and ``bus''.
+	To estimate the robustness of vehicle detection models, we use the mean average precision (mAP) at 0.50-0.95 IoU, henceforth simply referred to as ``mAP''. The mAP is an aggregate metric based on the confusion matrix, the intersection over union (IoU), recall and precision. In this study, we only consider two relevant classes of vehicles, namely ``car'' and ``bus''.
 
 \subsubsection{Calculation of the mAP at 0.50-0.95 IoU}
 
-	The mAP at 0.50-0.95 IoU is calculated by dividing the sum of the average precision ($AP$) per class by the number of classes $N$.  In our study $N = 2$ (``car'' and ``bus'').
+	The mAP is calculated by dividing the sum of the average precision ($AP$) per class by the number of classes $N$.  In our study $N = 2$ (``car'' and ``bus'').
 	
 	\[
 	mAP = \frac{1}{N} \sum_{i=1}^{N} AP_i
@@ -80,13 +81,11 @@
 			\item Use model to generate prediction scores
 			\item Map prediction scores onto class labels
 			\item Construct the confusion matrix
-			\item Calculate precision and recall for a set of IoU thresholds
+			\item Calculate precision and recall for a set of IoU thresholds (0.50-0.95)
 			\item Calculate area under precision-recall curve
 			\item Calculate average precision
 		\end{compactenum}
 	\end{center}
-
-TODO : hier eenmalig argumenteren waarom we mAP 0.50 - 0.95 verkiezen en dat we vanaf nu altijd mAP gebruiken maar 0.50-0.95 bedoelen.
 
 	The IoU metric is used to evaluate the performance of object detection by quantifying the fit between the ground truth bounding box and the predicted bounding box.
 	
@@ -103,25 +102,11 @@ TODO : hier eenmalig argumenteren waarom we mAP 0.50 - 0.95 verkiezen en dat we 
 
 	Two open-source datasets are used for this research. The DAWN dataset \cite{bw1x-yh39-20} is a collection of 1000 images from real-traffic environments in adverse weather conditions. The images are divided into four sets of weather conditions: fog, snow, rain and sandstorms. They are labelled according to the categories relevant for current research (``car'' and ``bus'') and annotated with object bounding boxes. We use the DAWN dataset for both validation and training.
 	
-	The second dataset is the UA-DETRAC \cite{CVIU_UA-DETRAC} dataset. This dataset provides 140K traffic images taken at Beijing and Tianjin (China). Images of the UA-DETRAC dataset are divided into four weather categories: ``cloudy'', ``night'', ``sunny'' and ``rainy''. They are labelled ``car'', ``bus'', ``van'' and ``others''; and annotated with object bounding boxes. The dataset is split into a training dataset (DETRAC-Train-Images) and an evaluation dataset (DETRAC-Test-Images).   From the union of the train and test datasets, we only use images of the category ``sunny'' for data augmentation and training. No other images are used from the UA-DETRAC dataset.
-
-\subsection{Model selection}
- 
-	For vehicle detection we chose an open source convolutional neural network called YOLO{\small v8} \cite{yolov8_ultralytics}. We use this model in transfer learning and as a reference for derived models. YOLO{\small v8} is trained on the Microsoft COCO dataset \cite{linMicrosoftCOCOCommon2015a} and capable of detecting object categories ``car'', ``bus''.
-
-\subsection{Experiments}
-
-The null hypothesis for this research question is that there is no difference in detection accuracy as measured with mAP at 0.50-0.95 IoU between a model trained with thematically augmented images and the baseline YOLO\small{v8} model.
-
-The null hypothesis for this research question is that there is no difference in detection accuracy as measured with mAP at 0.50-0.95 IoU between a model trained with actual adverse weather condition images and the baseline YOLO\small{v8} model.
-
-	The chosen augmentation software imgaug \cite{imgaug} (version 0.4.0) cannot add sandstorm effects to images, so we start by creating a subset of the DAWN dataset by excluding all images of the weather category ``sandstorm''. The resulting subset is then randomly partitioned with a 80/20 ratio. The larger part is denoted by DAWN-train and the smaller part by DAWN-test.
-
-	See Table \ref{table:datasets} for an overview.
-
-	\begin{table}
+	The second dataset is the UA-DETRAC \cite{CVIU_UA-DETRAC} dataset. This dataset provides 140K traffic images taken at Beijing and Tianjin (China). Images of the UA-DETRAC dataset are divided into four weather categories: ``cloudy'', ``night'', ``sunny'' and ``rainy''. They are labelled ``car'', ``bus'', ``van'' and ``others''; and annotated with object bounding boxes. The dataset is split into a training dataset (DETRAC-Train-Images) and an evaluation dataset (DETRAC-Test-Images).   From the union of the train and test datasets, we only use images of the category ``sunny'' for data augmentation and training. No other images are used from the UA-DETRAC dataset. See Table \ref{table:datasets} for an overview.
+	
+	\begin{table}[H]
 		\centering
-		\begin{tabular}{crrp{1.5in}}
+		\begin{tabular}{cccp{1.5in}}
 			\toprule
 			\textbf{dataset} & \textbf{labels} & \textbf{filter} & \textbf{use} \\
 			\midrule
@@ -133,37 +118,61 @@ The null hypothesis for this research question is that there is no difference in
 		\label{table:datasets}
 	\end{table}
 
+\subsection{Model selection}
+ 
+	For vehicle detection we chose an open source convolutional neural network called YOLO{\small v8} \cite{yolov8_ultralytics}. We use this model in transfer learning and as a reference for derived models. YOLO{\small v8} is trained on the Microsoft COCO dataset \cite{linMicrosoftCOCOCommon2015a} and capable of detecting object categories ``car'' and ``bus''.
 
+\subsection{Experiments}
 
-Next we establish a baseline measurement, by presenting the DAWN-test set to the standard YOLO{\small v8} model and determine its mAP over the ``car'' and ``bus'' classes. Then, we compose the union of the DETRAC-Train-Images and DETRAC-Test-Images and from it extract images of the weather category ``sunny''. The extracted images are used to produce three distinct trainingsets by augmenting them with fog, rain and snow using imgaug \cite{imgaug}. The obtained trainingsets are denoted resp. DETRAC-fog, DETRAC-rain and DETRAC-snow. We then train the standard YOLO{\small v8} model with the union of the DETRAC-fog, DETRAC-rain and DETRAC-snow datasets. Finally, we determine the mAP of the new model over the  ``car'' and ``bus'' classes, by presenting it the DAWN-test set. Comparing the mAP of the baseline with the mAP of the new model should provide some ground for answering the first research question.  An overview is presented in Table \ref{table:setuprq1}.
+	The chosen augmentation software imgaug \cite{imgaug} (version 0.4.0) cannot add sandstorm effects to images, so we start by creating a subset of the DAWN dataset by excluding all images of the weather category ``sandstorm''. The resulting subset is then randomly partitioned with a 80/20 ratio. The larger part is denoted by DAWN-train and the smaller part by DAWN-test.
 
-	To answer the second research question, we train the standard YOLO{\small v8} model with the DAWN-train dataset and measure the mAP at 0.50-0.95 IoU of the derived model. Like before, the mAP at 0.50-0.95 IoU is calculated over the ``car'' and ``bus'' classes for the DAWN-test set.  An overview is presented in Table \ref{table:setuprq2}
+	Next we establish a baseline measurement, by presenting the DAWN-test set to the standard YOLO{\small v8} model and determine its mAP over the ``car'' and ``bus'' classes. Then, we compose the union of the DETRAC-Train-Images and DETRAC-Test-Images and from it extract images of the weather category ``sunny''. The extracted images are used to produce three distinct trainingsets by augmenting them with fog, rain and snow using imgaug \cite{imgaug}. The obtained trainingsets are denoted resp. DETRAC-fog, DETRAC-rain and DETRAC-snow. We then train the standard YOLO{\small v8} model with the union of the DETRAC-fog, DETRAC-rain and DETRAC-snow datasets. Finally, we determine the mAP of the new model over the  ``car'' and ``bus'' classes, by presenting it the DAWN-test set. Comparing the mAP of the baseline with the mAP of the new model should provide some ground for answering the first research question.
 
-\begin{table}[!ht]
-	\begin{tabular}{lll}
-		\toprule
-		\textbf{measurement} & \textbf{training} & \textbf{validation} \\
-		\midrule
-		baseline & none & DAWN-test \\
-		augmented images & $DETRAC_{train}$ & DAWN-test \\
-		\bottomrule
-	\end{tabular}
-	\caption{setup RQ \ref{rq1}}
-	\label{table:setuprq1}
-\end{table}
+	To answer the second research question, we train the standard YOLO{\small v8} model with the DAWN-train dataset and measure the mAP of the derived model. Like before, the mAP is calculated over the ``car'' and ``bus'' classes for the DAWN-test set.
+	
+	A schematic summary of the proposed research process is given in figure \ref{fig:experiment_process} and tables \ref{table:setuprq1} and \ref{table:setuprq2}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.21]{Proposal_diagram.png}
+		\caption{Schematic representation of proposed research}
+		\label{fig:experiment_process}
+	\end{figure}
+	
 
-\begin{table}[!ht]
-	\begin{tabular}{lll}
-		\toprule
-		\textbf{measurement} & \textbf{training} & \textbf{validation} \\
-		\midrule
-		baseline & none & DAWN-test \\
-		adverse weather condition images & DAWN-train & DAWN-test \\
-		\bottomrule
-	\end{tabular}
-	\caption{setup RQ \ref{rq2}}
-	\label{table:setuprq2}
-\end{table}
+	\begin{table}[!ht]
+		\centering
+		\begin{tabular}{lll}
+			\toprule
+			\textbf{measurement} & \textbf{training} & \textbf{validation} \\
+			\midrule
+			baseline & none & DAWN-test \\
+			augmented images & $DETRAC_{train}$ & DAWN-test \\
+			\bottomrule
+		\end{tabular}
+		\caption{setup RQ \ref{rq1}}
+		\label{table:setuprq1}
+	\end{table}
+
+	\begin{table}[!ht]
+		\centering
+		\begin{tabular}{lll}
+			\toprule
+			\textbf{measurement} & \textbf{training} & \textbf{validation} \\
+			\midrule
+			baseline & none & DAWN-test \\
+			adverse weather condition images & DAWN-train & DAWN-test \\
+			\bottomrule
+		\end{tabular}
+		\caption{setup RQ \ref{rq2}}
+		\label{table:setuprq2}
+	\end{table}
+
+\section{Data analysis}
+
+	The null hypothesis for this research question is that there is no difference in detection accuracy as measured with mAP at 0.50-0.95 IoU between a model trained with thematically augmented images and the baseline YOLO\small{v8} model.
+
+	The null hypothesis for this research question is that there is no difference in detection accuracy as measured with mAP at 0.50-0.95 IoU between a model trained with actual adverse weather condition images and the baseline YOLO\small{v8} model.
 
 \section{Proposed time line}
 
