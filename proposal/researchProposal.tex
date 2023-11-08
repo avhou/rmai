@@ -175,7 +175,7 @@
 
 \section{Data analysis}
 
-	Our approach to the proposed study will be that of a single case mechanism experiment. More specifically, we investigate the effect of differences in an independent variable $X$ being a model derived by transfer learning from YOLO{\small v8} on a dependent variable mAP. Since we only consider three models (standard YOLO{\small v8}, a model derived from augmented images and a model derived from actual images), the study does not produce a volume of data large enough to use statistical techniques.
+	Our approach to the proposed study will be that of a single case mechanism experiment. More specifically, we investigate the effect of differences in an independent variable $X$ being a model derived from transfer learning, on a dependent variable $Y$ being the mean average precision. Since we only consider three models (standard YOLO{\small v8}, a model derived from augmented images and a model derived from actual images), the study does not produce a volume of data large enough to use statistical inference.
 	
 	Our scientific hypothesis related to research question \ref{rq1} is that, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with thematically augmented images, is higher than the mAP at at 0.50-0.95 IoU of the standard YOLO{\small v8}. 	
 	
@@ -185,8 +185,7 @@
 	
 	To conclusively answer research question \ref{rq3} in which we compare the accuracy of a model learned from augmented images with that of a model learned from actual images, the design of our study cannot provide sufficient evidence. Nevertheless, we will shortly present our intuitions based on our understanding of neural networks.
 	
-	Finally, by brief consideration of the learnability properties of other base models we should be able to generalize our findings by analogy with YOLO{\small v8}.
-	
+	Finally, by brief consideration of the learnability properties of other base models we should be able to generalize our findings by analogy with YOLO{\small v8}.	
 
 \section{Proposed time line}
 
