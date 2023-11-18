@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12 Portable) (preloaded format=pdflatex 2023.1.4)  30 OCT 2023 12:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12 Portable) (preloaded format=pdflatex 2023.1.4)  8 NOV 2023 13:00
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -472,6 +472,15 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip76
 )
+(C:\Workdir\MyApps\scoop\apps\latex\current\texmfs\install\tex/latex/float\floa
+t.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count398
+\float@exts=\toks18
+\float@box=\box52
+\@float@everytoks=\toks19
+\@floatcapt=\box53
+)
 (C:\Workdir\MyApps\scoop\apps\latex\current\texmfs\install\tex/latex/graphics\g
 raphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
@@ -497,29 +506,51 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 \Gin@req@height=\dimen145
 \Gin@req@width=\dimen146
 )
-\@quotelevel=\count398
-\@quotereset=\count399
+(C:\Workdir\MyApps\scoop\apps\latex\current\texmfs\install\tex/latex/booktabs\b
+ooktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen147
+\lightrulewidth=\dimen148
+\cmidrulewidth=\dimen149
+\belowrulesep=\dimen150
+\belowbottomsep=\dimen151
+\aboverulesep=\dimen152
+\abovetopsep=\dimen153
+\cmidrulesep=\dimen154
+\cmidrulekern=\dimen155
+\defaultaddspace=\dimen156
+\@cmidla=\count399
+\@cmidlb=\count400
+\@aboverulesep=\dimen157
+\@belowrulesep=\dimen158
+\@thisruleclass=\count401
+\@lastruleclass=\count402
+\@thisrulewidth=\dimen159
+)
+\c@researchquestion=\count403
+\@quotelevel=\count404
+\@quotereset=\count405
  (researchProposal.aux)
 \openout1 = `researchProposal.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -535,9 +566,9 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'researchProposal.bbl' found.
  (researchProposal.bbl)
-Package biblatex Info: Reference section=0 on input line 17.
-Package biblatex Info: Reference segment=0 on input line 17.
-Package hyperref Info: Link coloring OFF on input line 17.
+Package biblatex Info: Reference section=0 on input line 20.
+Package biblatex Info: Reference segment=0 on input line 20.
+Package hyperref Info: Link coloring OFF on input line 20.
  (researchProposal.out)
 (researchProposal.out)
 \@outlinefile=\write4
@@ -547,17 +578,17 @@ Package hyperref Info: Link coloring OFF on input line 17.
 (C:\Workdir\MyApps\scoop\apps\latex\current\texmfs\install\tex/context/base/mki
 i\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count400
-\scratchdimen=\dimen147
-\scratchbox=\box52
-\nofMPsegments=\count401
-\nofMParguments=\count402
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count403
-\MPscratchDim=\dimen148
-\MPnumerator=\count404
-\makeMPintoPDFobject=\count405
-\everyMPtoPDFconversion=\toks19
+\scratchcounter=\count406
+\scratchdimen=\dimen160
+\scratchbox=\box54
+\nofMPsegments=\count407
+\nofMParguments=\count408
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count409
+\MPscratchDim=\dimen161
+\MPnumerator=\count410
+\makeMPintoPDFobject=\count411
+\everyMPtoPDFconversion=\toks21
 )
 (C:\Workdir\MyApps\scoop\apps\latex\current\texmfs\install\tex/latex/epstopdf-p
 kg\epstopdf-base.sty
@@ -570,91 +601,141 @@ pstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 20.
+(Font)              <12> on input line 23.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 20.
+(Font)              <8> on input line 23.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 20.
+(Font)              <6> on input line 23.
  [1
 
 {C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/data/fonts/map/pdftex/pdftex
-.map}] [2]
+.map}] [2] [3]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 72.
+(Font)              <9> on input line 76.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 72.
-<./images//Intersection_over_Union_-_object_detection_bounding_boxes.jpg, id=76
+(Font)              <5> on input line 76.
+<./images//Intersection_over_Union_-_object_detection_bounding_boxes.jpg, id=88
 , 602.25pt x 451.6875pt>
 File: ./images//Intersection_over_Union_-_object_detection_bounding_boxes.jpg G
 raphic file (type jpg)
 <use ./images//Intersection_over_Union_-_object_detection_bounding_boxes.jpg>
 Package pdftex.def Info: ./images//Intersection_over_Union_-_object_detection_b
-ounding_boxes.jpg  used on input line 95.
+ounding_boxes.jpg  used on input line 99.
 (pdftex.def)             Requested size: 142.26378pt x 106.69794pt.
-<./images//Intersection_over_Union_-_visual_equation.png, id=77, 602.25pt x 469
+<./images//Intersection_over_Union_-_visual_equation.png, id=89, 602.25pt x 469
 .755pt>
 File: ./images//Intersection_over_Union_-_visual_equation.png Graphic file (typ
 e png)
 <use ./images//Intersection_over_Union_-_visual_equation.png>
 Package pdftex.def Info: ./images//Intersection_over_Union_-_visual_equation.pn
-g  used on input line 96.
+g  used on input line 100.
 (pdftex.def)             Requested size: 142.26378pt x 110.96587pt.
+ [4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.109 	
+        <./images//Intersection_over_Union_-_object_detection_bounding_boxes.jp
+g> <./images//Intersection_over_Union_-_visual_equation.png>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 114.
+ [5
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.136 	T
+        o answer the second research question, we train the standard YOLO{\s...
+]
+<./images//Proposal_diagram.png, id=131, 1242.6425pt x 2010.51125pt>
+File: ./images//Proposal_diagram.png Graphic file (type png)
+<use ./images//Proposal_diagram.png>
+Package pdftex.def Info: ./images//Proposal_diagram.png  used on input line 142
+.
+(pdftex.def)             Requested size: 260.96263pt x 422.21983pt.
+ [6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.161 
+       <./images//Proposal_diagram.png>] [7
+pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.196 	\item T
+              raining models
+pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.196 	\item T
+              raining models]
+<proposal-timing.png, id=154, 1253.68375pt x 213.79875pt>
+File: proposal-timing.png Graphic file (type png)
+<use proposal-timing.png>
+Package pdftex.def Info: proposal-timing.png  used on input line 204.
+(pdftex.def)             Requested size: 345.0pt x 58.8356pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3] [4 <./images//Intersection_over_Union_-_object_detection_bounding_boxes.jpg
-> <./images//Intersection_over_Union_-_visual_equation.png>]
 
 Package biblatex Warning: No driver for 'data'.
-(biblatex)                Using fallback driver on input line 124.
+(biblatex)                Using fallback driver on input line 209.
 
-[5]
-Overfull \hbox (14.73476pt too wide) in paragraph at lines 125--125
+[8
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.210 
+       <./proposal-timing.png (PNG copy)>]
+Overfull \hbox (14.73476pt too wide) in paragraph at lines 210--210
 \OT1/cmr/m/n/10 niques for Deep Learn-ing''. In: \OT1/cmr/m/it/10 Pat-tern Reco
 g-ni-tion \OT1/cmr/m/n/10 137 (May 2023), p. 109347.
  []
 
-[6] (researchProposal.aux)
+[9] (researchProposal.aux)
 Package rerunfilecheck Info: File `researchProposal.out' has not changed.
-(rerunfilecheck)             Checksum: 80831F51BC8F9174779B4D5EF47D73FF;1382.
+(rerunfilecheck)             Checksum: A6C2A184866DF39CA72A4414C5C00E4E;1588.
 Package logreq Info: Writing requests to 'researchProposal.run.xml'.
 \openout1 = `researchProposal.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 15865 strings out of 476406
- 289697 string characters out of 2783414
- 1859787 words of memory out of 3000000
- 36039 multiletter control sequences out of 15000+600000
- 518477 words of font info for 53 fonts, out of 8000000 for 9000
+ 16069 strings out of 476406
+ 292929 string characters out of 2783414
+ 1861787 words of memory out of 3000000
+ 36218 multiletter control sequences out of 15000+600000
+ 519427 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,7n,68p,1868b,1456s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/inst
-all/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Workdir/MyApps/scoop/apps/lat
-ex/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Workdir/
-MyApps/scoop/apps/latex/current/texmfs/install/fonts/type1/public/amsfonts/cm/c
-mcsc10.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install/fonts/typ
-e1/public/amsfonts/cm/cmex10.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/te
-xmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Workdir/MyApps/scoop
-/apps/latex/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:
-/Workdir/MyApps/scoop/apps/latex/current/texmfs/install/fonts/type1/public/amsf
-onts/cm/cmr10.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install/fo
-nts/type1/public/amsfonts/cm/cmr12.pfb><C:/Workdir/MyApps/scoop/apps/latex/curr
-ent/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Workdir/MyApps/
-scoop/apps/latex/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb
-><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install/fonts/type1/public/
-amsfonts/cm/cmr8.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install
-/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Workdir/MyApps/scoop/apps/latex/cu
-rrent/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Workdir/MyAp
-ps/scoop/apps/latex/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmti9
+ 60i,10n,68p,1868b,1474s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ <C:\Workdir\MyApps\scoop\apps\latex\current\texmfs/data\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\tcrm0900.pk><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/i
+nstall/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Workdir/MyApps/scoop/apps/
+latex/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Work
+dir/MyApps/scoop/apps/latex/current/texmfs/install/fonts/type1/public/amsfonts/
+cm/cmbx9.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install/fonts/t
+ype1/public/amsfonts/cm/cmcsc10.pfb><C:/Workdir/MyApps/scoop/apps/latex/current
+/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Workdir/MyApps/sc
+oop/apps/latex/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
+<C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install/fonts/type1/public/a
+msfonts/cm/cmmi9.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Workdir/MyApps/scoop/apps/latex/c
+urrent/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Workdir/MyAp
+ps/scoop/apps/latex/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17
 .pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install/fonts/type1/pub
-lic/amsfonts/cm/cmtt10.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/i
-nstall/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on researchProposal.pdf (6 pages, 348644 bytes).
+lic/amsfonts/cm/cmr6.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/ins
+tall/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Workdir/MyApps/scoop/apps/late
+x/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Workdir/My
+Apps/scoop/apps/latex/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs/install/fonts/type1/
+public/amsfonts/cm/cmti9.pfb><C:/Workdir/MyApps/scoop/apps/latex/current/texmfs
+/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Workdir/MyApps/scoop/app
+s/latex/current/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on researchProposal.pdf (9 pages, 547279 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 274 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
