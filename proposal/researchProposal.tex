@@ -87,45 +87,49 @@
 
 \subsection{Data collection}
 
-	Two open-source datasets are used for this research. The DAWN dataset \cite{bw1x-yh39-20} is a collection of 1000 images from real-traffic environments in adverse weather conditions. The images are divided into four sets of weather conditions: fog, snow, rain and sandstorms. They are labelled according to the categories relevant for current research (``car'' and ``bus'') and annotated with object bounding boxes. We use the DAWN dataset for both validation and training.
-	
-	The second dataset is the UA-DETRAC \cite{CVIU_UA-DETRAC} dataset. This dataset provides 140K traffic images taken at Beijing and Tianjin (China). Images of the UA-DETRAC dataset are divided into four weather categories: ``cloudy'', ``night'', ``sunny'' and ``rainy''. They are labelled ``car'', ``bus'', ``van'' and ``others''; and annotated with object bounding boxes. The dataset is split into a training dataset (DETRAC-Train-Images) and an evaluation dataset (DETRAC-Test-Images).   From the union of the train and test datasets, we only use images of the category ``sunny'' for data augmentation and training. No other images are used from the UA-DETRAC dataset. See Table \ref{table:datasets} for an overview.
+	Two open-source datasets are used for this research. The smaller one is DAWN and the larger one is UA-DETRAC.
+
+\subsubsection{DAWN}
+
+	The DAWN dataset described in \cite{bw1x-yh39-20}, is a collection of 1000 images of actual traffic events in adverse weather conditions. The images are divided into four equally sized sets of weather conditions: fog, snow, rain and sandstorms. They are labelled according to the categories relevant for current research (``car'' and ``bus'') and annotated with object bounding boxes. From DAWN we exclude all images of wheather type ``sandstorms'' since these do not match with any of our thematic augmentations. We use the remaining image set of 750 images for both validation and training. In particular, the remaining image set is randomly partitioned with a 80/20 ratio. The larger part is denoted by DAWN-train and contains 600 images. The smaller part is denoted by DAWN-test and contains 150 images.
+
+\subsubsection{UA-DETRAC}
+
+	The UA-DETRAC dataset is described in \cite{CVIU_UA-DETRAC}. This dataset provides 140K traffic images taken at 24 different locations in Beijing and Tianjin (China). Images of the UA-DETRAC dataset belong to one of four weather categories: ``cloudy'', ``night'', ``sunny'' and ``rainy''. They are labelled ``car'', ``bus'', ``van'' and ``others''; and annotated with object bounding boxes. The dataset is made available in two parts, a training dataset (DETRAC-Train-Images) and an evaluation dataset (DETRAC-Test-Images). To increase variation in our training set, we use the union of both the DETRAC-Train-Images and DETRAC-Test-Images. From this union we only use images of category ``sunny'', so that the effect of image augmentation is not confounded by images that already showed what the augmentation is adding artificially (eg. augmenting ``cloudy'' or ``rainy'' images with artificial fog or rain). We denote the so obtained set of images by DETRAC-sunny. Finally, to keep consumption of resources (computational and human-hours) within reasonable bounds, we further constrain the volume of images by randomly selecting 200 images from DETRAC-sunny. Table \ref{table:datasets} gives a summary.
 
 	\begin{table}[H]
 		\centering
-		\begin{tabular}{cccp{1.5in}}
+		\begin{tabular}{lccr}
 			\toprule
-			\textbf{dataset} & \textbf{labels} & \textbf{filter} & \textbf{number of images} \\
+			\textbf{dataset} & \textbf{labels} & \textbf{weather} & \textbf{images} \\
 			\midrule
-			\textbf{DAWN} & car, bus & fog, snow, rain &  \\
-			\textbf{EU-DETRAC} & car, bus & sunny &  \\
+			\textbf{DAWN-train} & car, bus & fog, snow, rain &  600 \\
+			\textbf{DAWN-test} & car, bus & fog, snow, rain &  150 \\
+			\textbf{DETRAC-sunny} & car, bus & sunny & 200 \\
 			\bottomrule
 		\end{tabular}
-		\caption{Datasets used}
+		\caption{The DAWN data sets are not used in image augmentation, they serve as-given for both training and testing. The DETRAC-sunny data set is used in image augmentation and model training.}
 		\label{table:datasets}
 	\end{table}
 
-\subsection{Experiments}
-
-	The chosen augmentation software imgaug \cite{imgaug} (version 0.4.0) cannot add sandstorm effects to images, so we start by creating a subset of the DAWN dataset by excluding all images of the weather category ``sandstorm''. The resulting subset is then randomly partitioned with a 80/20 ratio. The larger part is denoted by DAWN-train and the smaller part by DAWN-test.
+\subsection{Image augmentation and training}
 	
-	Next we establish a baseline measurement, by presenting the DAWN-test set to the standard YOLO{\small v8} model and determine its mAP over the ``car'' and ``bus'' classes. Then, we compose the union of the DETRAC-Train-Images and DETRAC-Test-Images and from it extract images of the weather category ``sunny''. The extracted images are used to produce three distinct trainingsets by augmenting them with fog, rain and snow using imgaug \cite{imgaug}. The obtained trainingsets are denoted resp. DETRAC-fog, DETRAC-rain and DETRAC-snow. We then train the standard YOLO{\small v8} model with the union of the DETRAC-fog, DETRAC-rain and DETRAC-snow datasets. Finally, we determine the mAP of the new model over the  ``car'' and ``bus'' classes, by presenting it the DAWN-test set. Comparing the mAP of the baseline with the mAP of the new model should provide some ground for answering the first research question.
+	To answer research question \ref{rq1} we produce three distinct trainingsets from DETRAC-sunny. One training set is obtained by adding artificial fog, one by adding artificial rain and one by adding artificial snow. The trainingsets are denoted resp. DETRAC-fog, DETRAC-rain and DETRAC-snow and together comprise 600 images. For the image augmentation, we use imgaug \cite{imgaug} (version 0.4.0). We train the standard YOLO{\small v8} model with the union of the DETRAC-fog, DETRAC-rain and DETRAC-snow datasets to produce a new vehicle detection model. This model is referred to as ``the augmented model''. 
 	
-	To answer the second research question, we train the standard YOLO{\small v8} model with the DAWN-train dataset and measure the mAP of the derived model. Like before, the mAP is calculated over the ``car'' and ``bus'' classes for the DAWN-test set.
-	
-	A schematic summary of the proposed research process is given in figure \ref{fig:experiment_process} and tables \ref{table:setuprq1} and \ref{table:setuprq2}.
+	To answer research question \ref{rq2} we use the DAWN-train dataset to train the standard YOLO{\small v8} model. This dataset contains 600 actual images of vehicles in adverse weather conditions and since no augmentation is used, the derived model is referred to as ``the non-augmented model''.	A summary of the proposed research is given in tables \ref{table:setuprq1} and \ref{table:setuprq2}.
 
 	\begin{table}[H]
 		\centering
 		\begin{tabular}{lll}
 			\toprule
-			\textbf{measurement} & \textbf{training} & \textbf{data set} \\
+			\textbf{model} & \textbf{training} & \textbf{testing} \\
 			\midrule
-			baseline & none & DAWN-test \\
-			augmented images & DETRAC-train & DAWN-test \\
+			YOLO{\small v8} & none & DAWN-test \\
+			\hline
+			Augmented model & \begin{tabular}{@{}l@{}}DETRAC-fog \\ DETRAC-rain \\ DETRAC-snow\end{tabular} & DAWN-test \\
 			\bottomrule
 		\end{tabular}
-		\caption{setup RQ \ref{rq1}}
+		\caption{The setup for RQ \ref{rq1} consists in comparing the accuracy of a baseline model with that of an augmented model, given an identical test set DAWN-test.}
 		\label{table:setuprq1}
 	\end{table}
 	
@@ -133,17 +137,27 @@
 		\centering
 		\begin{tabular}{lll}
 			\toprule
-			\textbf{measurement} & \textbf{training} & \textbf{data set} \\
+			\textbf{model} & \textbf{training} & \textbf{testing} \\
 			\midrule
-			baseline & none & DAWN-test \\
-			actual images & DAWN-train & DAWN-test \\
+			YOLO{\small v8} & none & DAWN-test \\
+			\hline
+			Non-augmented model & DAWN-train & DAWN-test \\
 			\bottomrule
 		\end{tabular}
-		\caption{setup RQ \ref{rq2}}
+		\caption{The setup for RQ \ref{rq2} consists in comparing the accuracy of a baseline model with that of a non-augmented model, given an identical test set DAWN-test.}
 		\label{table:setuprq2}
 	\end{table}
 
 \section{Data analysis}
+
+	To analyze the effect of image augmentation on model accuracy, we first establish a baseline measurement by presenting the DAWN-test set to the standard YOLO{\small v8} model and determine its mAP over the ``car'' and ``bus'' classes. 
+
+Finally, we determine the mAP of the new model over the  ``car'' and ``bus'' classes, by presenting it the DAWN-test set. Comparing the mAP of the baseline with the mAP of the new model should provide some ground for answering the first research question.
+
+To answer the second research question, we train the standard YOLO{\small v8} model with the DAWN-train dataset and measure the mAP of the derived model. Like before, the mAP is calculated over the ``car'' and ``bus'' classes for the DAWN-test set.
+
+
+
 
 	Our approach to the proposed study will be that of a single case mechanism experiment. More specifically, we investigate the effect of differences in an independent variable $X$ being a model derived from transfer learning, on a dependent variable $Y$ being the mean average precision. Since we only consider three models (standard YOLO{\small v8}, a model derived from augmented images and a model derived from actual images), the study does not produce a volume of data large enough to use statistical inference.
 	
