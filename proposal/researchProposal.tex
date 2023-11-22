@@ -35,6 +35,8 @@
 	Sometimes object detection can be improved with image augmentation techniques, in which the original images are rotated, shifted or mirror imaged to create a larger training set with more variability in the training images.	We propose to investigate the effect of image augmentation on the robustness of YOLO{\small v8}-based vehicle detection models. In particular, we propose to investigate the effect of artificially adding rain, fog and snow to real clear weather images of highways. Compared to augmentation by simple geometric transformations, the proposed kind of augmentation is thematic and focussed towards specific use cases. We expect to see a significant improvement of the mean intersection over union (IoU) for vehicle detection in models derived from YOLO{\small v8} by training on the augmented images. 
 	
 	We chose standard YOLO{\small v8} as a reference and base model to train from, because YOLO{\small v8} is state-of-the-art and comes pre-equipped with annotations for vehicle detection and many developer-convenience features. Also, YOLO{\small v8} is well-documented as a ready-to-use product and in scientific literature. Moreover, there is a large community around the YOLO models that can provide assistance should this be needed. Finally, YOLO{\small v8} is an open-source software, licensed under AGPL-3.0. All artifacts produced by the proposed study will hence be made available through a public GitHub repository.  
+	
+	The proposed research seeks to confirm the hypothesis that refining the standard YOLO{\small v8} with augmented images improves detection accuracy. We also try to confirm the hypothesis that such a model is ``as good as'' one trained from actual images of traffic in adverse weather conditions.
 
 \section{Literature review}
 
@@ -194,33 +196,24 @@
 
 \subsection{Hypothesis testing}
 	
-	For research question \ref{rq1} we formulate following null hypothesis:
-	
+	In light of research question \ref{rq1} we formulate following hypotheses. Define $\mu_1$ as the mean IoU obtained from predictions made by the augmented model over the DAWN-test set, and likewise $\mu_2$ as that obtained from predictions made by the baseline model (YOLO{\small v8}) over the same DAWN-test set. Then, the null hypothesis $H_0$ and alternative hypothesis $H_a$ are given as:
 	
 	\begin{itemize}
-		\item $H_0$: the mean number of vehicles detected by the baseline model ($\mu_1$) is identical with the mean number of vehicles detected by the augmented model ($\mu_2$), that is $\mu_1 = \mu_2$. 
+		\item $H_0$: $\mu_1 \le \mu_2$. 
+		\item $H_a$: $\mu_1 > \mu_2$
 	\end{itemize}
 	
+	We use a one-tailed t-test to determine if $H_0$ can be rejected at the 0.05 significance level. If this is the case we answer research question \ref{rq1} in the affirmative, which means that training with augmented images indeed yields better accuracy in vehicle detection. 
 	
-	the mean number of cavities per person does not differ between the flossing group (µ1) and the non-flossing group (µ2) in the population; µ1 = µ2.
+	In light of research question \ref{rq2} we formulate similar hypotheses and reject $H_0$ at the 0.05 significance level. Again, if this is the case we answer \ref{rq2} in the affirmative and take that training with actual images also yields better accuracy in vehicle detection.
+	Finally, to answer research question \ref{rq3} we formulate following hypotheses:
 	
+	\begin{itemize}
+		\item $H_0$: $\mu_1 = \mu_2$. 
+		\item $H_a$: $\mu_1 \neq \mu_2$
+	\end{itemize}
 	
-	To analyze the effect of image augmentation on model accuracy, we first establish a baseline measurement by presenting the DAWN-test set to the standard YOLO{\small v8} model and determine its mAP over the ``car'' and ``bus'' classes. 
-
-	Finally, we determine the mAP of the new model over the  ``car'' and ``bus'' classes, by presenting it the DAWN-test set. Comparing the mAP of the baseline with the mAP of the new model should provide some ground for answering the first research question.
-
-	To answer the second research question, we train the standard YOLO{\small v8} model with the DAWN-train dataset and measure the mAP of the derived model. Like before, the mAP is calculated over the ``car'' and ``bus'' classes for the DAWN-test set.
-
-	
- 	
-	
-  
-	
-
-	.
-	
-
-
+	We use a two-tailed t-test to determine if $H_0$ can be rejected at the 0.05 significance level. With $H_0$ rejected, we find evidence for answering research question \ref{rq3} in the \textit{negative}. To answer research question \ref{rq3} in the affirmative the null hypothesis should be confirmed. And if that is the case we can more confidently interchange the augmented and non-augmented models.
 
 \section{Proposed time line}
 
