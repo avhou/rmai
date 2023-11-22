@@ -187,8 +187,12 @@
 	\end{figure}
 	
 	By using a lower bound for the value of the IoU metric, one can discriminate between positive and negative predictions. The IoU metric can then be used to calculate recall and precision. In the context of traffic management, it seems reasonable to favour recall over precision and choose an IoU threshold to reflect this preference. However, choosing a good IoU threshold is itself an optimization process. For comparing models, optimizing the IoU threshold is unnecessary. Instead, we calculate AP as an average of AP's calculated for a set of IoU thresholds per class.
+	
+\subsubsection{Relevance to proposed research}
+	
+	From results reported by \cite{kumarObjectDetectionAdverse2023} and \cite{liVehicleDetectionFoggy2022}, we expect to see an improvement in the accuracy of the augmented model as compared with that of the baseline YOLO{\small v8} model. We hold similar expectation for the non-augmented model. More concretely, our scientific hypothesis related to research question \ref{rq1} is that, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with thematically augmented images, is higher than that of the standard YOLO{\small v8} model. And likewise, our scientific hypothesis related to research question \ref{rq2}, is similar. That is, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with  \textit{actual} images, is higher than that of the standard YOLO{\small v8} model.
 
-\subsubsection{Hypothesis testing}
+\subsection{Hypothesis testing}
 	
 	To analyze the effect of image augmentation on model accuracy, we first establish a baseline measurement by presenting the DAWN-test set to the standard YOLO{\small v8} model and determine its mAP over the ``car'' and ``bus'' classes. 
 
@@ -197,15 +201,14 @@
 	To answer the second research question, we train the standard YOLO{\small v8} model with the DAWN-train dataset and measure the mAP of the derived model. Like before, the mAP is calculated over the ``car'' and ``bus'' classes for the DAWN-test set.
 
 	
-	Our scientific hypothesis related to research question \ref{rq1} is that, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with thematically augmented images, is higher than the mAP at at 0.50-0.95 IoU of the standard YOLO{\small v8}. 	
+ 	
 	
-	Related to research question \ref{rq2}, our scientific hypothesis is similar to the hypothesis related to research question \ref{rq1}. Ie, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with  \textit{actual} images, is higher than the mAP at 0.50-0.95 IoU of the standard YOLO{\small v8}.  
+  
 	
-	The statistical significance of the observed differences in accuracy must be left undecided in this study. Yet we will attempt to give an explanation of the causal relationship between image augmentation and improved accuracy of prediction.
+
 	
 	To conclusively answer research question \ref{rq3} in which we compare the accuracy of a model learned from augmented images with that of a model learned from actual images, the design of our study cannot provide sufficient evidence. Nevertheless, we will shortly present our intuitions based on our understanding of neural networks.
 	
-	Finally, by brief consideration of the learnability properties of other base models we should be able to generalize our findings by analogy with YOLO{\small v8}.	
 
 
 
