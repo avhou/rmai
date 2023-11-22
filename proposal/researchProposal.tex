@@ -190,9 +190,20 @@
 	
 \subsubsection{Relevance to proposed research}
 	
-	From results reported by \cite{kumarObjectDetectionAdverse2023} and \cite{liVehicleDetectionFoggy2022}, we expect to see an improvement in the accuracy of the augmented model as compared with that of the baseline YOLO{\small v8} model. We hold similar expectation for the non-augmented model. More concretely, our scientific hypothesis related to research question \ref{rq1} is that, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with thematically augmented images, is higher than that of the standard YOLO{\small v8} model. And likewise, our scientific hypothesis related to research question \ref{rq2}, is similar. That is, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with  \textit{actual} images, is higher than that of the standard YOLO{\small v8} model.
+	From results reported by \cite{kumarObjectDetectionAdverse2023} and \cite{liVehicleDetectionFoggy2022}, we expect to see an improvement in the accuracy of the augmented model as compared with that of the baseline YOLO{\small v8} model. We hold similar expectation for the non-augmented model. More concretely, our scientific hypothesis related to research question \ref{rq1} is that, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with thematically augmented images, is higher than that of the standard YOLO{\small v8} model. Our scientific hypothesis related to research question \ref{rq2}, is similar. That is, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with  \textit{actual} images, is higher than that of the standard YOLO{\small v8} model.
 
 \subsection{Hypothesis testing}
+	
+	For research question \ref{rq1} we formulate following null hypothesis:
+	
+	
+	\begin{itemize}
+		\item $H_0$: the mean number of vehicles detected by the baseline model ($\mu_1$) is identical with the mean number of vehicles detected by the augmented model ($\mu_2$), that is $\mu_1 = \mu_2$. 
+	\end{itemize}
+	
+	
+	the mean number of cavities per person does not differ between the flossing group (µ1) and the non-flossing group (µ2) in the population; µ1 = µ2.
+	
 	
 	To analyze the effect of image augmentation on model accuracy, we first establish a baseline measurement by presenting the DAWN-test set to the standard YOLO{\small v8} model and determine its mAP over the ``car'' and ``bus'' classes. 
 
@@ -206,8 +217,7 @@
   
 	
 
-	
-	To conclusively answer research question \ref{rq3} in which we compare the accuracy of a model learned from augmented images with that of a model learned from actual images, the design of our study cannot provide sufficient evidence. Nevertheless, we will shortly present our intuitions based on our understanding of neural networks.
+	.
 	
 
 
