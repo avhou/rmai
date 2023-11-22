@@ -150,16 +150,52 @@
 
 \section{Data analysis}
 
+	Our approach to the proposed study can best be described as a statistical difference making experiment. We use the mean average precision to rank models by their accuracy in detecting vehicles in images. However, to be more precise about the obtained improvements from refining the standard YOLO{\small v8} model, we propose a hypothesis significance test. 
+	
+\subsection{Measuring model accuracy}
+
+	To estimate the accuracy of vehicle detection models, we use the mean average precision (mAP) at 0.50-0.95 IoU, henceforth simply referred to as ``mAP''. The mAP is an aggregate metric based on the confusion matrix, the intersection over union (IoU), recall and precision. In this study, we only consider two relevant classes of vehicles, namely ``car'' and ``bus''.
+
+\subsubsection{Calculation of the mAP at 0.50-0.95 IoU}
+
+	The mAP is calculated by dividing the sum of the average precision ($AP$) per class by the number of classes $N$.  In our study $N = 2$ (``car'' and ``bus'').
+	
+	\[
+	mAP = \frac{1}{N} \sum_{i=1}^{N} AP_i
+	\]
+	
+	In summary, the $AP$ of a model is obtained by following steps:
+	
+	\begin{center}
+		\begin{compactenum}
+			\item Use model to generate prediction scores
+			\item Map prediction scores onto class labels
+			\item Construct the confusion matrix
+			\item Calculate precision and recall for a set of IoU thresholds (0.50-0.95)
+			\item Calculate area under precision-recall curve
+			\item Calculate average precision
+		\end{compactenum}
+	\end{center}
+	
+	The IoU metric is used to evaluate the performance of object detection by quantifying the fit between the ground truth bounding box and the predicted bounding box.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=5cm]{Intersection_over_Union_-_object_detection_bounding_boxes.jpg}
+		\includegraphics[width=5cm]{Intersection_over_Union_-_visual_equation.png}
+		\caption{Illustration of IoU.\\ \footnotesize{(\url{http://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/})}}
+	\end{figure}
+	
+	By using a lower bound for the value of the IoU metric, one can discriminate between positive and negative predictions. The IoU metric can then be used to calculate recall and precision. In the context of traffic management, it seems reasonable to favour recall over precision and choose an IoU threshold to reflect this preference. However, choosing a good IoU threshold is itself an optimization process. For comparing models, optimizing the IoU threshold is unnecessary. Instead, we calculate AP as an average of AP's calculated for a set of IoU thresholds per class.
+
+\subsubsection{Hypothesis testing}
+	
 	To analyze the effect of image augmentation on model accuracy, we first establish a baseline measurement by presenting the DAWN-test set to the standard YOLO{\small v8} model and determine its mAP over the ``car'' and ``bus'' classes. 
 
-Finally, we determine the mAP of the new model over the  ``car'' and ``bus'' classes, by presenting it the DAWN-test set. Comparing the mAP of the baseline with the mAP of the new model should provide some ground for answering the first research question.
+	Finally, we determine the mAP of the new model over the  ``car'' and ``bus'' classes, by presenting it the DAWN-test set. Comparing the mAP of the baseline with the mAP of the new model should provide some ground for answering the first research question.
 
-To answer the second research question, we train the standard YOLO{\small v8} model with the DAWN-train dataset and measure the mAP of the derived model. Like before, the mAP is calculated over the ``car'' and ``bus'' classes for the DAWN-test set.
+	To answer the second research question, we train the standard YOLO{\small v8} model with the DAWN-train dataset and measure the mAP of the derived model. Like before, the mAP is calculated over the ``car'' and ``bus'' classes for the DAWN-test set.
 
-
-
-
-	Our approach to the proposed study will be that of a single case mechanism experiment. More specifically, we investigate the effect of differences in an independent variable $X$ being a model derived from transfer learning, on a dependent variable $Y$ being the mean average precision. Since we only consider three models (standard YOLO{\small v8}, a model derived from augmented images and a model derived from actual images), the study does not produce a volume of data large enough to use statistical inference.
 	
 	Our scientific hypothesis related to research question \ref{rq1} is that, for the detection of cars and busses in images of traffic in adverse weather conditions, the mAP at 0.50-0.95 IoU of a model obtained by transfer learning from the standard YOLO{\small v8} with thematically augmented images, is higher than the mAP at at 0.50-0.95 IoU of the standard YOLO{\small v8}. 	
 	
@@ -171,41 +207,7 @@ To answer the second research question, we train the standard YOLO{\small v8} mo
 	
 	Finally, by brief consideration of the learnability properties of other base models we should be able to generalize our findings by analogy with YOLO{\small v8}.	
 
-\subsection{Measuring model accuracy}
 
-	To estimate the robustness of vehicle detection models, we use the mean average precision (mAP) at 0.50-0.95 IoU, henceforth simply referred to as ``mAP''. The mAP is an aggregate metric based on the confusion matrix, the intersection over union (IoU), recall and precision. In this study, we only consider two relevant classes of vehicles, namely ``car'' and ``bus''.
-
-\subsubsection{Calculation of the mAP at 0.50-0.95 IoU}
-
-	The mAP is calculated by dividing the sum of the average precision ($AP$) per class by the number of classes $N$.  In our study $N = 2$ (``car'' and ``bus'').
-	
-	\[
-	mAP = \frac{1}{N} \sum_{i=1}^{N} AP_i
-	\]
-
-	In summary, the $AP$ of a model is obtained by following steps:
-
-	\begin{center}
-		\begin{compactenum}
-			\item Use model to generate prediction scores
-			\item Map prediction scores onto class labels
-			\item Construct the confusion matrix
-			\item Calculate precision and recall for a set of IoU thresholds (0.50-0.95)
-			\item Calculate area under precision-recall curve
-			\item Calculate average precision
-		\end{compactenum}
-	\end{center}
-
-	The IoU metric is used to evaluate the performance of object detection by quantifying the fit between the ground truth bounding box and the predicted bounding box.
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=5cm]{Intersection_over_Union_-_object_detection_bounding_boxes.jpg}
-		\includegraphics[width=5cm]{Intersection_over_Union_-_visual_equation.png}
-		\caption{Images from Wikipedia \footnotesize{(\url{https://en.wikipedia.org/wiki/Jaccard_index})}}
-	\end{figure}
-	
-	By using a lower bound for the value of the IoU metric, one can discriminate between positive and negative predictions. The IoU metric can then be used to calculate recall and precision. In the context of traffic management, it seems reasonable to slightly favour recall over precision and choose an IoU threshold to reflect this preference. However, choosing a good IoU threshold is itself an optimization process. For comparing models, optimizing the IoU threshold is unnecessary. Instead, we calculate AP as an average of AP's calculated for a set of IoU thresholds per class.
 
 \section{Proposed time line}
 
