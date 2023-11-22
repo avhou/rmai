@@ -1,6 +1,6 @@
 import sys
 import os
-from typing import List
+from typing import List, Set
 import xml.etree.ElementTree as ET
 import imageio as iio
 import itertools
@@ -39,11 +39,17 @@ class Annotation:
         return f"{annotation_class} {center_x} {center_y} {width} {height}{os.linesep}"
 
 
-def read_annotations(annotation_file: str, annotation_filename: str) -> List[Annotation]:
+def read_annotations(annotation_file: str, annotation_filename: str) -> (Set[str], List[Annotation]):
     result = []
+    sunny_datasets = set()
     datasetname = os.path.splitext(annotation_filename)[0]
     tree = ET.parse(annotation_file)
     root = tree.getroot()
+    for sequence_attribute in root.iter("sequence_attribute"):
+        if str(sequence_attribute.attrib["sence_weather"]).lower() == "sunny":
+            sunny_datasets.add(datasetname)
+            print(f"dataset {datasetname} was added to the list of sunny datasets")
+
     for frame in root.iter("frame"):
         num = int(frame.attrib['num'])
         for target in frame.iter("target"):
@@ -56,17 +62,20 @@ def read_annotations(annotation_file: str, annotation_filename: str) -> List[Ann
                 height = float(box.attrib["height"])
                 vehicle_type = str(attribute.attrib["vehicle_type"])
                 result.append(Annotation(num, datasetname, left, top, width, height, vehicle_type))
-    return result
+    return (sunny_datasets, result)
 
 
 def convert_detrac(image_folder: str, annotation_folder: str):
     annotations = []
+    sunny_datasets = set()
     for dirpath, _, files in os.walk(annotation_folder):
         for filename in files:
             if filename.lower().endswith("xml"):
                 fname = os.path.join(dirpath, filename)
                 print(f"read annotation file {fname}")
-                annotations.extend(read_annotations(fname, filename))
+                (sunny_datasets_for_file, extra_annotations) = read_annotations(fname, filename)
+                annotations.extend(extra_annotations)
+                sunny_datasets.update(sunny_datasets_for_file)
 
     grouped_annotations = defaultdict(list)
     for key, values in itertools.groupby(annotations, lambda annotation: (annotation.num, annotation.dataset)):
@@ -74,6 +83,7 @@ def convert_detrac(image_folder: str, annotation_folder: str):
 
     labelmap = {}
     total_images = 0
+    total_sunny_images = 0
 
     for dirpath, _, files in os.walk(image_folder):
         for filename in files:
@@ -93,8 +103,11 @@ def convert_detrac(image_folder: str, annotation_folder: str):
                             labelmap[annotation.vehicle_type] = value + 1
                         f.write(annotation.annotate(width, height, labelmap[annotation.vehicle_type]))
                 total_images += 1
+                if image_dataset in sunny_datasets:
+                    total_sunny_images += 1
 
     print(f"totaal aantal images : {total_images}")
+    print(f"totaal aantal sunny images : {total_sunny_images}")
     print("labelmap : ")
     print(labelmap)
 
