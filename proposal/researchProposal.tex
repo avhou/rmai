@@ -206,14 +206,7 @@
 	We use a one-tailed t-test to determine if $H_0$ can be rejected at the 0.05 significance level. If this is the case we answer research question \ref{rq1} in the affirmative, which means that training with augmented images indeed yields better accuracy in vehicle detection. 
 	
 	In light of research question \ref{rq2} we formulate similar hypotheses and reject $H_0$ at the 0.05 significance level. Again, if this is the case we answer \ref{rq2} in the affirmative and take that training with actual images also yields better accuracy in vehicle detection.
-	Finally, to answer research question \ref{rq3} we formulate following hypotheses:
-	
-	\begin{itemize}
-		\item $H_0$: $\mu_1 = \mu_2$. 
-		\item $H_a$: $\mu_1 \neq \mu_2$
-	\end{itemize}
-	
-	We use a two-tailed t-test to determine if $H_0$ can be rejected at the 0.05 significance level. With $H_0$ rejected, we find evidence for answering research question \ref{rq3} in the \textit{negative}. To answer research question \ref{rq3} in the affirmative the null hypothesis should be confirmed. And if that is the case we can more confidently interchange the augmented and non-augmented models.
+	Finally, to answer research question \ref{rq3} we use the ``two one-sided t-test'' (TOST) procedure.
 
 \section{Proposed time line}
 
