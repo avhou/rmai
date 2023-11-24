@@ -111,13 +111,12 @@
 			\midrule
 			\textbf{DAWN} & 1000 & car, bus & fog, snow, rain &  DAWN-train & 600 \\
 			 & &  &  &  DAWN-test & 104 \\
-			\textbf{DETRAC} & 25\,881 & car, bus & sunny & DETRAC-sunny & 200 \\
+			\textbf{UA-DETRAC} & 25\,881 & car, bus & sunny & DETRAC-sunny & 200 \\
 			\bottomrule
 		\end{tabular}
 		\caption{After exclusion of sandstorm images from the DAWN data set, only 704 images remain. From those 704 images, a random selection of 600 are reserved for training and another 104 for testing. DAWN images are not used in image augmentation. Images of category ``sunny'' are selected from the DETRAC data set and are used in image augmentation and model training.}
 		\label{table:datasets}
 	\end{table}
-
 
 \subsection{Image augmentation and training}
 	
@@ -158,6 +157,42 @@
 		\caption{The setup for RQ \ref{rq2} consists in comparing the accuracy of a baseline model with that of a non-augmented model, given an identical test set DAWN-test.}
 		\label{table:setuprq2}
 	\end{table}
+
+	\begin{table}[H]
+		\captionsetup{font=scriptsize}
+		\centering
+		\small
+		\begin{tabular}{lll}
+			\toprule
+			\textbf{model} & \textbf{training} & \textbf{testing} \\
+			\midrule
+			Augmented model & DETRAC-train & DAWN-test \\
+			\hline
+			Non-augmented model & DAWN-train & DAWN-test \\
+			\bottomrule
+		\end{tabular}
+		\caption{The setup for RQ \ref{rq3} consists in comparing the performance of the augmented model with that of the non-augmented model. This comparison is based on the predictions made by each model for the DAWN-test set.}
+		\label{table:setuprq3}
+	\end{table}
+
+	Both original and augmented example images of the DAWN and UA-DETRAC data sets are illustrated figure \ref{fig:example-images}.
+	
+	\begin{figure}[H]
+		\captionsetup{font=scriptsize}
+		\small
+		\centering
+		\begin{tabular}{cc}
+			\includegraphics[width=65mm, height=40mm]{dawn-train-fullres.png} &   \includegraphics[width=65mm, height=40mm]{dawn-fog.jpg} \\
+			(a) DAWN-rain & (b) DAWN-fog  \\[6pt]
+			\includegraphics[width=65mm, height=40mm]{detrac-orig.jpg} &   \includegraphics[width=65mm, height=40mm]{detrac-rain-fullres.png} \\
+			(c) UA-DETRAC original  & (d) UA-DETRAC augmented rain \\[6pt]
+			\includegraphics[width=65mm, height=40mm]{detrac-fog-fullres.png} &   \includegraphics[width=65mm, height=40mm]{detrac-snow-fullres.png} \\
+			(c) UA-DETRAC augmented fog & (d) UA-DETRAC augmented snow \\[6pt]
+		\end{tabular}
+		\caption{Example images of the DAWN and UA-DETRAC datasets.  (a) a rainy image of the DAWN dataset, (b) a foggy image of the DAWN dataset.  (c) original image of the UA-DETRAC dataset (sunny conditions).  This UA-DETRAC image is artificially augmented with rain (d), fog (e) and snow (f) }
+		\label{fig:example-images}
+	\end{figure}
+
 
 \section{Data analysis}
 
