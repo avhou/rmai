@@ -33,9 +33,9 @@
 	
 	Traffic monitoring and dynamic control of traffic flows can be part of a mitigation strategy. The current technology behind traffic monitoring uses vehicle detection in images captured from strategically placed CCTV cameras on highways. However, the accuracy of vehicle detection degrades when images show adverse weather conditions.
 	
-	Sometimes object detection can be improved with image augmentation techniques, in which the original images are rotated, shifted or mirror imaged to create a larger training set with more variability in the training images.	We propose to investigate the effect of image augmentation on the robustness of YOLO{\small v8}-based vehicle detection models. In particular, we propose to investigate the effect of artificially adding rain, fog and snow to real clear weather images of highways. Compared to augmentation by simple geometric transformations, the proposed kind of augmentation is thematic and focussed towards specific use cases. We expect to see a significant improvement of the mean intersection over union (IoU) for vehicle detection in models derived from YOLO{\small v8} by training on the augmented images. 
+	Sometimes object detection can be improved with image augmentation techniques, in which the original images are rotated, shifted or mirrored to create a larger training set with more variability in the training images.	We propose to investigate the effect of image augmentation on the robustness of YOLO{\small v8}-based vehicle detection models. In particular, we propose to investigate the effect of artificially adding rain, fog and snow to real clear weather images of highways. Compared to augmentation by simple geometric transformations, the proposed kind of augmentation is thematic and focussed towards specific use cases. We expect to see a significant improvement of the mean intersection over union (IoU) for vehicle detection in models derived from YOLO{\small v8} by training on the augmented images. 
 	
-	We chose standard YOLO{\small v8} as a reference and base model to train from, because YOLO{\small v8} is state-of-the-art and comes pre-equipped with annotations for vehicle detection and many developer-convenience features. Also, YOLO{\small v8} is well-documented as a ready-to-use product and in scientific literature. Moreover, there is a large community around the YOLO models that can provide assistance should this be needed. Finally, YOLO{\small v8} is an open-source software, licensed under AGPL-3.0. All artifacts produced by the proposed study will hence be made available through a public GitHub repository.  
+	We chose standard YOLO{\small v8} as a reference and base model to train from, because YOLO{\small v8} is state-of-the-art and comes pre-equipped with annotations for vehicle detection and many developer-convenience features. Also, YOLO{\small v8} is well-documented as a ready-to-use product and in scientific literature. Moreover, there is a large community around the YOLO{\small v8} models that can provide assistance should this be needed. Finally, YOLO{\small v8} is an open-source software, licensed under AGPL-3.0. All artifacts produced by the proposed study will hence be made available through a public GitHub repository.  
 	
 	The proposed research seeks to confirm the hypothesis that refining the standard YOLO{\small v8} with augmented images improves detection accuracy. We also try to confirm the hypothesis that such a model is ``as good as'' one trained from actual images of traffic in adverse weather conditions.
 
@@ -47,7 +47,7 @@
 	
 	The effectiveness of image augmentation on the classification of images with deep learning is discussed in \cite{perezEffectivenessDataAugmentation2017}. Simple techniques, such as cropping, rotating, and flipping images are compared. Additionally this paper reports on experiments with generative adversarial neural networks to learn augmentation strategies.
 	
-	Research similar to the proposed research can be found in \cite{kumarObjectDetectionAdverse2023}. The central question in \cite{kumarObjectDetectionAdverse2023} is whether YOLO{\small v8} can be improved through transfer learning to detect objects in adverse weather. This paper supports the hypothesis that training with actual images of adverse weather conditions significantly improves the detection performance compared to the standard YOLO{\small v8} model. An enhanced YOLO\small{v8}-based model for vehicle detection in foggy weather conditions is the focus of \cite{liVehicleDetectionFoggy2022}. The approach used to create the enhanced model is interesting in that the trainingset is obtained from 350 traffic images that are augmented with a fog-effect and subsequently dehazed with the multi-scale retinex with color restoration (MSRCR) algorithm. The final trainingset is then composed of the original images, fogged images and dehazed images. Whereas results in \cite{liVehicleDetectionFoggy2022} are reported with autonomous vehicles in mind, \cite{songVisionbasedVehicleDetection2019} specifically targets vehicle detection and counting in highway management.  A new segmentation method is proposed to divide a depicted highway road surface into a distal and a proximal area. Using this separation a YOLO{\small v3} model is trained to detect the type and location of vehicles. To estimate vehicle count and trajectories the Oriented FAST and Rotated BRIEF (ORB) algorithm is added to the image processing pipeline.
+	Research similar to the proposed research can be found in \cite{kumarObjectDetectionAdverse2023}. The central question in \cite{kumarObjectDetectionAdverse2023} is whether YOLO{\small v8} can be improved through transfer learning to detect objects in adverse weather. This paper supports the hypothesis that training with actual images of adverse weather conditions significantly improves the detection performance compared to the standard YOLO{\small v8} model. An enhanced YOLO\small{v4}-based model for vehicle detection in foggy weather conditions is the focus of \cite{liVehicleDetectionFoggy2022}. The approach used to create the enhanced model is interesting in that the trainingset is obtained from 350 traffic images that are augmented with a fog-effect and subsequently dehazed with the multi-scale retinex with color restoration (MSRCR) algorithm. The final trainingset is then composed of the original images, fogged images and dehazed images. Whereas results in \cite{liVehicleDetectionFoggy2022} are reported with autonomous vehicles in mind, \cite{songVisionbasedVehicleDetection2019} specifically targets vehicle detection and counting in highway management.  A new segmentation method is proposed to divide a depicted highway road surface into a distal and a proximal area. Using this separation a YOLO{\small v3} model is trained to detect the type and location of vehicles. To estimate vehicle count and trajectories the Oriented FAST and Rotated BRIEF (ORB) algorithm is added to the image processing pipeline.
 	
 
 \section{Research questions}
@@ -98,7 +98,7 @@
 
 \subsubsection{UA-DETRAC}
 
-	The UA-DETRAC dataset is described in \cite{CVIU_UA-DETRAC}. This dataset provides 140K traffic images taken at 24 different locations in Beijing and Tianjin (China). Images of the UA-DETRAC dataset belong to one of four weather categories: ``cloudy'', ``night'', ``sunny'' and ``rainy''. They are labelled ``car'', ``bus'', ``van'' and ``others''; and annotated with object bounding boxes. The dataset is made available in two parts, a training dataset (DETRAC-Train-Images) and an evaluation dataset (DETRAC-Test-Images). To increase variation in our training set, we use the union of both the DETRAC-Train-Images and DETRAC-Test-Images. From this union we only use images of category ``sunny'', so that the effect of image augmentation is not confounded by images that already showed what the augmentation is adding artificially (eg. augmenting ``cloudy'' or ``rainy'' images with artificial fog or rain). We denote the so obtained set of images by DETRAC-sunny. Finally, to keep consumption of resources (computational and human-hours) within reasonable bounds, we further constrain the volume of images by randomly selecting 200 images from DETRAC-sunny. Table \ref{table:datasets} gives a summary.
+	The UA-DETRAC dataset is described in \cite{CVIU_UA-DETRAC}. This dataset provides 140K traffic images taken at 24 different locations in Beijing and Tianjin (China). Images of the UA-DETRAC dataset belong to one of four weather categories: ``cloudy'', ``night'', ``sunny'' and ``rainy''. They are labelled ``car'', ``bus'', ``van'' and ``others''; and annotated with object bounding boxes. The dataset is made available in two parts, a training dataset (DETRAC-Train-Images) and an evaluation dataset (DETRAC-Test-Images). To increase variation in our training set, we use the union of both the DETRAC-Train-Images and DETRAC-Test-Images. From this union we only use images of category ``sunny'', so that the effect of image augmentation is not confounded by images that already showed what the augmentation is adding artificially (eg. augmenting ``cloudy'' or ``rainy'' images with artificial fog or rain). We call the so obtained set of images by DETRAC-sunny. Finally, to keep consumption of resources (computational and human-hours) within reasonable bounds, we further constrain the volume of images by randomly selecting 200 images from DETRAC-sunny. Table \ref{table:datasets} gives a summary.
 
 
 	\begin{table}[H]
@@ -137,7 +137,7 @@
 			Augmented model & \begin{tabular}{@{}l@{}}DETRAC-fog \\ DETRAC-rain \\ DETRAC-snow\end{tabular} & DAWN-test \\
 			\bottomrule
 		\end{tabular}
-		\caption{The setup for RQ \ref{rq1} consists in comparing the accuracy of a baseline model with that of an augmented model, given an identical test set DAWN-test.}
+		\caption{The setup for RQ \ref{rq1} compares the accuracy of a baseline model with that of an augmented model, given an identical test set DAWN-test.}
 		\label{table:setuprq1}
 	\end{table}
 	
@@ -154,7 +154,7 @@
 			Non-augmented model & DAWN-train & DAWN-test \\
 			\bottomrule
 		\end{tabular}
-		\caption{The setup for RQ \ref{rq2} consists in comparing the accuracy of a baseline model with that of a non-augmented model, given an identical test set DAWN-test.}
+		\caption{The setup for RQ \ref{rq2} compares the accuracy of a baseline model with that of a non-augmented model, given an identical test set DAWN-test.}
 		\label{table:setuprq2}
 	\end{table}
 
@@ -171,7 +171,7 @@
 			Non-augmented model & DAWN-train & DAWN-test \\
 			\bottomrule
 		\end{tabular}
-		\caption{The setup for RQ \ref{rq3} consists in comparing the performance of the augmented model with that of the non-augmented model. This comparison is based on the predictions made by each model for the DAWN-test set.}
+		\caption{The setup for RQ \ref{rq3} compares the performance of the augmented model with that of the non-augmented model. This comparison is based on the predictions made by each model for the DAWN-test set.}
 		\label{table:setuprq3}
 	\end{table}
 
