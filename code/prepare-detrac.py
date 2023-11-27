@@ -5,9 +5,14 @@ import xml.etree.ElementTree as ET
 import imageio as iio
 import itertools
 from collections import defaultdict
+import tqdm
+import random
+from pathlib import Path
+import shutil
 
 
 class Annotation:
+    """ Keeps track of information about annotations """
     num: int
     left: float
     top: float
@@ -40,6 +45,12 @@ class Annotation:
 
 
 def read_annotations(annotation_file: str, annotation_filename: str) -> (Set[str], List[Annotation]):
+    """ Parses one detrac XML file
+
+    :param annotation_file:  the filename
+    :param annotation_filename: the absolute filename
+    :return: a tuple containing (sunny datasets, all annotations) found in this XML file
+    """
     result = []
     sunny_datasets = set()
     datasetname = os.path.splitext(annotation_filename)[0]
@@ -65,7 +76,15 @@ def read_annotations(annotation_file: str, annotation_filename: str) -> (Set[str
     return (sunny_datasets, result)
 
 
-def convert_detrac(image_folder: str, annotation_folder: str):
+def process_detrac(image_folder: str, annotation_folder: str):
+    """ process the detract image and annotation folders
+
+    will determine the sunny datasets, convert those sunny images to yolo format and randomly choose 200 images of those sunny images
+
+    :param image_folder: folder containing the images (in subdirectories per dataset / traffic intersection)
+    :param annotation_folder: folder containing the annotations (in subdirectories per dataset / traffic intersection)
+    :return: nothing
+    """
     annotations = []
     sunny_datasets = set()
     for dirpath, _, files in os.walk(annotation_folder):
@@ -82,34 +101,48 @@ def convert_detrac(image_folder: str, annotation_folder: str):
         grouped_annotations[key] = list(values)
 
     labelmap = {}
-    total_images = 0
-    total_sunny_images = 0
+    sunny_images = []
 
     for dirpath, _, files in os.walk(image_folder):
-        for filename in files:
-            if filename.lower().endswith("jpg") or filename.lower().endswith("jpeg"):
-                fname = os.path.join(dirpath, filename)
-                image = iio.v2.imread(fname)
-                (height, width, _) = image.shape
-                image_num = int("".join(c for c in filename if c.isdigit()))
-                image_dataset = os.path.basename(os.path.dirname(fname))
-                annotations_for_image = [a for a in grouped_annotations[(image_num, image_dataset)]]
-                annotation_filename = f"{os.path.splitext(fname)[0]}.txt"
-                print(f"write annotation file {annotation_filename}, image_num {image_num}, image_dataset {image_dataset}")
-                with open(annotation_filename, "w") as f:
-                    for annotation in annotations_for_image:
-                        if annotation.vehicle_type not in labelmap:
-                            value = 0 if len(labelmap) == 0 else max(labelmap.values())
-                            labelmap[annotation.vehicle_type] = value + 1
-                        f.write(annotation.annotate(width, height, labelmap[annotation.vehicle_type]))
-                total_images += 1
-                if image_dataset in sunny_datasets:
-                    total_sunny_images += 1
+        current_dir = os.path.basename(dirpath)
+        if current_dir in sunny_datasets and "train-dataset" not in dirpath.lower():
+            for filename in tqdm.tqdm(files, desc=f"Process detrac files in folder {dirpath}"):
+                if filename.lower().endswith("jpg") or filename.lower().endswith("jpeg"):
+                    fname = os.path.join(dirpath, filename)
+                    image = iio.v2.imread(fname)
+                    (height, width, _) = image.shape
+                    image_num = int("".join(c for c in filename if c.isdigit()))
+                    image_dataset = os.path.basename(os.path.dirname(fname))
+                    annotations_for_image = [a for a in grouped_annotations[(image_num, image_dataset)]]
+                    annotation_filename = f"{os.path.splitext(fname)[0]}.txt"
+                    with open(annotation_filename, "w") as f:
+                        for annotation in annotations_for_image:
+                            if annotation.vehicle_type not in labelmap:
+                                value = 0 if len(labelmap) == 0 else max(labelmap.values())
+                                labelmap[annotation.vehicle_type] = value + 1
+                            f.write(annotation.annotate(width, height, labelmap[annotation.vehicle_type]))
+                    sunny_images.append(fname)
 
-    print(f"totaal aantal images : {total_images}")
-    print(f"totaal aantal sunny images : {total_sunny_images}")
-    print("labelmap : ")
-    print(labelmap)
+    print(f"totaal aantal sunny images : {len(sunny_images)}")
+    random.shuffle(sunny_images)
+
+    # restart from scratch for the train and validation datasets
+    train_dataset_folder = os.path.join(Path(image_folder).parent, "train-dataset")
+    if os.path.exists(train_dataset_folder):
+        shutil.rmtree(train_dataset_folder)
+    os.mkdir(train_dataset_folder)
+
+    training = sunny_images[:200]
+    print(f"copy training files")
+    index = 0
+    for file in training:
+        index += 1
+        basename = f"image{str(index).zfill(4)}"
+        annotation_file = f"{os.path.splitext(file)[0]}.txt"
+        shutil.copy(file, f"{train_dataset_folder}/{basename}.jpg")
+        shutil.copy(annotation_file, f"{train_dataset_folder}/{basename}.txt")
+
+    print(f"labelmap : {labelmap}")
 
 
 
@@ -118,5 +151,5 @@ if __name__ == '__main__':
     if (len(sys.argv) < 3):
         raise Exception("please specify image folder and annotation folder")
 
-    convert_detrac(sys.argv[1], sys.argv[2])
+    process_detrac(sys.argv[1], sys.argv[2])
     print("done")
