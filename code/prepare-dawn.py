@@ -19,7 +19,9 @@ def process_dawn(dawn_folder: str):
     # contains tuples (relative) filename, (relative) yolo annotation file
     all_files = []
     # contains the label_map, mappings from numeric id to human readable label
-    label_map = dict()
+    # this should probably correspond to the labelmap of coco for our base scenario.
+    # the yolo_annotation files appear to have an index of +1 compared to coco
+    label_map = {}
     for dirpath, _, files in os.walk(dawn_folder):
         for file in files:
             if not file.lower().endswith("zip") and (file.lower().endswith("jpg") or file.lower().endswith("jpeg")) and not "sand" in dirpath.lower() and not "train-dataset" in dirpath.lower() and not "validation-dataset" in dirpath.lower():
@@ -61,14 +63,15 @@ def process_dawn(dawn_folder: str):
         index += 1
         basename = f"image{str(index).zfill(4)}"
         shutil.copy(file, f"{train_dataset_folder}/{basename}.jpg")
-        shutil.copy(annotation_file, f"{train_dataset_folder}/{basename}.txt")
+        relabel_yolo_annotations(annotation_file, f"{train_dataset_folder}/{basename}.txt")
+
     print(f"copy validation files")
     index = 0
     for file, annotation_file in validation:
         index += 1
         basename = f"image{str(index).zfill(4)}"
         shutil.copy(file, f"{validation_dataset_folder}/{basename}.jpg")
-        shutil.copy(annotation_file, f"{validation_dataset_folder}/{basename}.txt")
+        relabel_yolo_annotations(annotation_file, f"{validation_dataset_folder}/{basename}.txt")
 
     print(f"generate yolov8 dataset yaml file")
     yolo_training_dataset = os.path.join(dawn_folder, "dawn-train-dataset.yml")
@@ -96,9 +99,19 @@ def read_yolo_annotations(annotation_file: str) -> List[int]:
     result = []
     with open(annotation_file, "r") as f:
         for line in f.readlines():
-            result.append(int(line.split(" ")[0]))
+            # subtract one, and it is a perfect match with yolov8 labelmap
+            result.append(int(line.split(" ")[0]) - 1)
     return result
 
+def relabel_yolo_annotations(src: str, dest: str):
+    with open(src, "r") as r:
+        with open(dest, "w") as w:
+            for line in r.readlines():
+                # subtract one, and it is a perfect match with yolov8 labelmap
+                words = line.split(" ")
+                label = int(words[0]) - 1
+                rest = " ".join(words[1:])
+                w.write(f"{label} {rest}")
 
 if __name__ == '__main__':
     if (len(sys.argv) < 2):

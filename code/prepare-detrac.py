@@ -51,7 +51,7 @@ def read_annotations(annotation_file: str, annotation_filename: str) -> (Set[str
     :param annotation_filename: the absolute filename
     :return: a tuple containing (sunny datasets, all annotations) found in this XML file
     """
-    result = []
+    annotations = []
     sunny_datasets = set()
     datasetname = os.path.splitext(annotation_filename)[0]
     tree = ET.parse(annotation_file)
@@ -72,8 +72,8 @@ def read_annotations(annotation_file: str, annotation_filename: str) -> (Set[str
                 width = float(box.attrib["width"])
                 height = float(box.attrib["height"])
                 vehicle_type = str(attribute.attrib["vehicle_type"])
-                result.append(Annotation(num, datasetname, left, top, width, height, vehicle_type))
-    return (sunny_datasets, result)
+                annotations.append(Annotation(num, datasetname, left, top, width, height, vehicle_type))
+    return (sunny_datasets, annotations)
 
 
 def process_detrac(image_folder: str, annotation_folder: str):
@@ -100,7 +100,9 @@ def process_detrac(image_folder: str, annotation_folder: str):
     for key, values in itertools.groupby(annotations, lambda annotation: (annotation.num, annotation.dataset)):
         grouped_annotations[key] = list(values)
 
-    labelmap = {}
+    labelmap = {
+
+    }
     sunny_images = []
 
     for dirpath, _, files in os.walk(image_folder):
