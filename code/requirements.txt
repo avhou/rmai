@@ -1,3 +1,6 @@
 imageio
 tqdm
 ultralytics
+imgaug
+imageio
+numpy==1.23.0
