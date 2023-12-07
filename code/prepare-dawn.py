@@ -2,7 +2,7 @@ import sys
 import os
 import random
 import shutil
-from typing import List
+from typing import *
 import xml.etree.ElementTree as ET
 
 
@@ -18,10 +18,9 @@ def process_dawn(dawn_folder: str):
 
     # contains tuples (relative) filename, (relative) yolo annotation file
     all_files = []
-    # contains the label_map, mappings from numeric id to human readable label
-    # this should probably correspond to the labelmap of coco for our base scenario.
-    # the yolo_annotation files appear to have an index of +1 compared to coco
-    label_map = {}
+    # label_map of labels of interest to us
+    label_map: Dict[str, int] = { "car": 0, "bus": 1}
+    dawn_label_map: Dict[int, str] = {}
     for dirpath, _, files in os.walk(dawn_folder):
         for file in files:
             if not file.lower().endswith("zip") and (file.lower().endswith("jpg") or file.lower().endswith("jpeg")) and not "sand" in dirpath.lower() and not "train-dataset" in dirpath.lower() and not "validation-dataset" in dirpath.lower():
@@ -30,16 +29,15 @@ def process_dawn(dawn_folder: str):
                 yolo_annotation_file = os.path.join(dirpath, f"{os.path.basename(dirpath)}_YOLO_darknet/{fbasename}.txt")
                 voc_annotation_file = os.path.join(dirpath, f"{os.path.basename(dirpath)}_PASCAL_VOC/{fbasename}.xml")
                 print(f"found file {file}, in dirname {dirpath}, yolo annotation file {yolo_annotation_file}, voc annotation file {voc_annotation_file}")
-                all_files.append((fname, yolo_annotation_file))
-                for yolo_annotation, voc_annotation in zip(read_yolo_annotations(yolo_annotation_file), read_voc_annotations(voc_annotation_file)):
-                    label_map[yolo_annotation] = voc_annotation
-    # the label_map needs some manipulations.  we dont have all labels in our datasets, and yolo expects continuous ranges of labels
-    max_label = sorted(label_map)[-1]
-    for key in range(max_label):
-        if key not in label_map:
-            label_map[key] = "Unknown"
-    print(f"final label_map : {label_map}")
+                all_voc_annotations = set(read_voc_annotations(voc_annotation_file))
+                if len(all_voc_annotations.intersection(set(label_map.keys()))) == 0:
+                   print(f"no relevant labels found for file {fname}, we will skip it")
+                else:
+                    all_files.append((fname, yolo_annotation_file))
+                    for yolo_annotation, voc_annotation in zip(read_yolo_annotations(yolo_annotation_file), read_voc_annotations(voc_annotation_file)):
+                        dawn_label_map[yolo_annotation] = voc_annotation
 
+    print(f"final dawn label map {dawn_label_map}")
 
     # restart from scratch for the train and validation datasets
     train_dataset_folder = os.path.join(dawn_folder, "train-dataset")
@@ -63,7 +61,7 @@ def process_dawn(dawn_folder: str):
         index += 1
         basename = f"image{str(index).zfill(4)}"
         shutil.copy(file, f"{train_dataset_folder}/{basename}.jpg")
-        relabel_yolo_annotations(annotation_file, f"{train_dataset_folder}/{basename}.txt")
+        filter_yolo_annotations(annotation_file, f"{train_dataset_folder}/{basename}.txt", dawn_label_map, label_map)
 
     print(f"copy validation files")
     index = 0
@@ -71,7 +69,7 @@ def process_dawn(dawn_folder: str):
         index += 1
         basename = f"image{str(index).zfill(4)}"
         shutil.copy(file, f"{validation_dataset_folder}/{basename}.jpg")
-        relabel_yolo_annotations(annotation_file, f"{validation_dataset_folder}/{basename}.txt")
+        filter_yolo_annotations(annotation_file, f"{validation_dataset_folder}/{basename}.txt", dawn_label_map, label_map)
 
     print(f"generate yolov8 dataset yaml file")
     yolo_training_dataset = os.path.join(dawn_folder, "dawn-train-dataset.yml")
@@ -80,8 +78,8 @@ def process_dawn(dawn_folder: str):
         f.write(f"train: {os.path.abspath(train_dataset_folder)}{os.linesep}")
         f.write(f"val: {os.path.abspath(validation_dataset_folder)}{os.linesep}")
         f.write(f"names:{os.linesep}")
-        for key in sorted(label_map):
-            f.write(f"  {key}: {label_map[key]}{os.linesep}")
+        f.write(f"  0: car{os.linesep}")
+        f.write(f"  1: bus{os.linesep}")
 
     print(f"Done")
 
@@ -99,19 +97,24 @@ def read_yolo_annotations(annotation_file: str) -> List[int]:
     result = []
     with open(annotation_file, "r") as f:
         for line in f.readlines():
-            # subtract one, and it is a perfect match with yolov8 labelmap
-            result.append(int(line.split(" ")[0]) - 1)
+            result.append(int(line.split(" ")[0]))
     return result
 
-def relabel_yolo_annotations(src: str, dest: str):
+def filter_yolo_annotations(src: str, dest: str, dawn_label_map: Dict[int, str], yolo_label_map: Dict[str, int]):
+    number_annotations_written = 0
     with open(src, "r") as r:
         with open(dest, "w") as w:
             for line in r.readlines():
-                # subtract one, and it is a perfect match with yolov8 labelmap
                 words = line.split(" ")
-                label = int(words[0]) - 1
+                label = int(words[0])
                 rest = " ".join(words[1:])
-                w.write(f"{label} {rest}")
+                label_str = dawn_label_map[label]
+                if label_str in yolo_label_map:
+                    w.write(f"{yolo_label_map[label_str]} {rest}")
+                    number_annotations_written += 1
+    # make sure at least one annotation was written
+    if number_annotations_written == 0:
+        raise Exception(f"we did not write any annotation for file {src}")
 
 if __name__ == '__main__':
     if (len(sys.argv) < 2):

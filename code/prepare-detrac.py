@@ -1,6 +1,6 @@
 import sys
 import os
-from typing import List, Set
+from typing import *
 import xml.etree.ElementTree as ET
 import imageio as iio
 import itertools
@@ -85,8 +85,8 @@ def process_detrac(image_folder: str, annotation_folder: str):
     :param annotation_folder: folder containing the annotations (in subdirectories per dataset / traffic intersection)
     :return: nothing
     """
-    annotations = []
-    sunny_datasets = set()
+    annotations: List[Annotation] = []
+    sunny_datasets: Set[str] = set()
     for dirpath, _, files in os.walk(annotation_folder):
         for filename in files:
             if filename.lower().endswith("xml"):
@@ -96,12 +96,19 @@ def process_detrac(image_folder: str, annotation_folder: str):
                 annotations.extend(extra_annotations)
                 sunny_datasets.update(sunny_datasets_for_file)
 
+
+    print(f"all vehicle types before filtering : {set((a.vehicle_type for a in annotations))}")
+    # we only want to keep annotations containing car and truck vehicle types
+    filtered_annotations: List[Annotation] = [a for a in annotations if a.vehicle_type == "car" or a.vehicle_type == "truck"]
+    print(f"total # of annotations is {len(annotations)}, filtered # of annotations is {len(filtered_annotations)}")
+    print(f"all vehicle types after filtering : {set((a.vehicle_type for a in annotations))}")
     grouped_annotations = defaultdict(list)
-    for key, values in itertools.groupby(annotations, lambda annotation: (annotation.num, annotation.dataset)):
+    for key, values in itertools.groupby(filtered_annotations, lambda annotation: (annotation.num, annotation.dataset)):
         grouped_annotations[key] = list(values)
 
-    labelmap = {
-
+    labelmap: Dict[str, int] = {
+        "car": 0,
+        "bus": 1
     }
     sunny_images = []
 
@@ -116,14 +123,12 @@ def process_detrac(image_folder: str, annotation_folder: str):
                     image_num = int("".join(c for c in filename if c.isdigit()))
                     image_dataset = os.path.basename(os.path.dirname(fname))
                     annotations_for_image = [a for a in grouped_annotations[(image_num, image_dataset)]]
-                    annotation_filename = f"{os.path.splitext(fname)[0]}.txt"
-                    with open(annotation_filename, "w") as f:
-                        for annotation in annotations_for_image:
-                            if annotation.vehicle_type not in labelmap:
-                                value = 0 if len(labelmap) == 0 else max(labelmap.values())
-                                labelmap[annotation.vehicle_type] = value + 1
-                            f.write(annotation.annotate(width, height, labelmap[annotation.vehicle_type]))
-                    sunny_images.append(fname)
+                    if len(annotations_for_image) > 0:
+                        annotation_filename = f"{os.path.splitext(fname)[0]}.txt"
+                        with open(annotation_filename, "w") as f:
+                            for annotation in annotations_for_image:
+                                f.write(annotation.annotate(width, height, labelmap[annotation.vehicle_type]))
+                        sunny_images.append(fname)
 
     print(f"totaal aantal sunny images : {len(sunny_images)}")
     random.shuffle(sunny_images)
