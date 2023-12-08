@@ -152,6 +152,16 @@ def process_detrac(image_folder: str, annotation_folder: str):
     print(f"labelmap : {labelmap}")
 
 
+    print(f"generate yolov8 dataset yaml file - colab")
+    yolo_training_dataset = os.path.join(Path(image_folder).parent, "detrac-train-dataset-colab.yml")
+    with open(yolo_training_dataset, "w") as f:
+        f.write(f"path: /datasets/detrac{os.linesep}")
+        f.write(f"train: /datasets/detrac/train-dataset-augmented{os.linesep}")
+        f.write(f"val: /datasets/dawn/validation-dataset{os.linesep}")
+        f.write(f"names:{os.linesep}")
+        f.write(f"  0: car{os.linesep}")
+        f.write(f"  1: bus{os.linesep}")
+
 
 
 if __name__ == '__main__':
