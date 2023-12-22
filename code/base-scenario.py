@@ -12,9 +12,9 @@ import predict
 def do_base_scenario(dawn_folder: str):
     """ base scenario
 
-    Use the base yolo model and validate against the dawn validation set
+    Use the base yolo model and predict against the dawn test set
 
-    :param dawn_folder: the folder containing the dawn validation dataset
+    :param dawn_folder: the folder containing the dawn test dataset
     :return: nothing
     """
 
@@ -41,6 +41,6 @@ def do_base_scenario(dawn_folder: str):
 
 if __name__ == '__main__':
     if (len(sys.argv) < 2):
-        raise Exception("please specify dawn validation folder")
+        raise Exception("please specify dawn test folder")
 
     do_base_scenario(sys.argv[1])

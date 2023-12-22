@@ -26,6 +26,6 @@ def actual_labels(annotation_file: str, label_map: Dict[int, str]) -> Counter:
 
 if __name__ == '__main__':
     if (len(sys.argv) < 3):
-        raise Exception("please specify dawn validation folder and pretrained model")
+        raise Exception("please specify dawn test folder and pretrained model")
 
     do_scenario_rq1(sys.argv[1], sys.argv[2])
