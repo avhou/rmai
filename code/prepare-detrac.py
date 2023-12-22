@@ -79,7 +79,8 @@ def read_annotations(annotation_file: str, annotation_filename: str) -> (Set[str
 def process_detrac(image_folder: str, annotation_folder: str):
     """ process the detract image and annotation folders
 
-    will determine the sunny datasets, convert those sunny images to yolo format and randomly choose 200 images of those sunny images
+    will determine the sunny datasets, convert those sunny images to yolo format and randomly choose 167 training images and 33 validation images of those sunny images
+    these images will be augmented 3 times so we end up with 501 training images and 99 validation images
 
     :param image_folder: folder containing the images (in subdirectories per dataset / traffic intersection)
     :param annotation_folder: folder containing the annotations (in subdirectories per dataset / traffic intersection)
@@ -114,7 +115,7 @@ def process_detrac(image_folder: str, annotation_folder: str):
 
     for dirpath, _, files in os.walk(image_folder):
         current_dir = os.path.basename(dirpath)
-        if current_dir in sunny_datasets and "train-dataset" not in dirpath.lower():
+        if current_dir in sunny_datasets and "train-dataset" not in dirpath.lower() and "validation-dataset" not in dirpath.lower():
             for filename in tqdm.tqdm(files, desc=f"Process detrac files in folder {dirpath}"):
                 if filename.lower().endswith("jpg") or filename.lower().endswith("jpeg"):
                     fname = os.path.join(dirpath, filename)
@@ -139,7 +140,14 @@ def process_detrac(image_folder: str, annotation_folder: str):
         shutil.rmtree(train_dataset_folder)
     os.mkdir(train_dataset_folder)
 
-    training = sunny_images[:200]
+    validation_dataset_folder = os.path.join(Path(image_folder).parent, "validation-dataset")
+    if os.path.exists(validation_dataset_folder):
+        shutil.rmtree(validation_dataset_folder)
+    os.mkdir(validation_dataset_folder)
+
+    training = sunny_images[:167]
+    validation = sunny_images[167:167+33]
+    print(f"# files {len(sunny_images)}, # training files {len(training)}, # validation files {len(validation)}")
     print(f"copy training files")
     index = 0
     for file in training:
@@ -149,6 +157,15 @@ def process_detrac(image_folder: str, annotation_folder: str):
         shutil.copy(file, f"{train_dataset_folder}/{basename}.jpg")
         shutil.copy(annotation_file, f"{train_dataset_folder}/{basename}.txt")
 
+    print(f"copy validation files")
+    index = 0
+    for file in validation:
+        index += 1
+        basename = f"image{str(index).zfill(4)}"
+        annotation_file = f"{os.path.splitext(file)[0]}.txt"
+        shutil.copy(file, f"{validation_dataset_folder}/{basename}.jpg")
+        shutil.copy(annotation_file, f"{validation_dataset_folder}/{basename}.txt")
+
     print(f"labelmap : {labelmap}")
 
 
@@ -157,7 +174,7 @@ def process_detrac(image_folder: str, annotation_folder: str):
     with open(yolo_training_dataset, "w") as f:
         f.write(f"path: /datasets/detrac{os.linesep}")
         f.write(f"train: /datasets/detrac/train-dataset-augmented{os.linesep}")
-        f.write(f"val: /datasets/dawn/validation-dataset{os.linesep}")
+        f.write(f"val: /datasets/detrac/validation-dataset-augmented{os.linesep}")
         f.write(f"names:{os.linesep}")
         f.write(f"  0: car{os.linesep}")
         f.write(f"  1: bus{os.linesep}")

@@ -8,7 +8,7 @@ from imgaug import augmenters as iaa
 def augment(non_augmented_folder: str, augmented_folder: str):
     """ augments the images in non_augmented_folder
 
-    will generate 3 training images (fog, snow, rain) in the augmented_folder for each image in non_augmented_folder
+    will generate 3 images (fog, snow, rain) in the augmented_folder for each image in non_augmented_folder
 
     :param non_augmented_folder: folder containing non augmented training images
     :param augmented_folder: output folder, will contain the augmented images

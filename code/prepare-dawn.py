@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 def process_dawn(dawn_folder: str):
     """ processes the dawn dataset
 
-    Does not keep the sandy images.  Takes all other images + the yolo annotations, shuffles them and generates a training and validation dataset
+    Does not keep the sandy images.  Takes all other images + the yolo annotations, shuffles them and generates a training, validation and test dataset
 
     :param dawn_folder: the folder containing the 4 unzipped dawn datasets (Fog, Rain, Sand, Snow).  Sand will be filtered out, the other images will be kept
                         and shuffled to prepare a training and validation dataset
@@ -23,7 +23,7 @@ def process_dawn(dawn_folder: str):
     dawn_label_map: Dict[int, str] = {}
     for dirpath, _, files in os.walk(dawn_folder):
         for file in files:
-            if not file.lower().endswith("zip") and (file.lower().endswith("jpg") or file.lower().endswith("jpeg")) and not "sand" in dirpath.lower() and not "train-dataset" in dirpath.lower() and not "validation-dataset" in dirpath.lower():
+            if not file.lower().endswith("zip") and (file.lower().endswith("jpg") or file.lower().endswith("jpeg")) and not "sand" in dirpath.lower() and not "train-dataset" in dirpath.lower() and not "validation-dataset" in dirpath.lower() and not "test-dataset" in dirpath.lower():
                 fname = os.path.join(dirpath, file)
                 fbasename = os.path.splitext(os.path.basename(fname))[0]
                 yolo_annotation_file = os.path.join(dirpath, f"{os.path.basename(dirpath)}_YOLO_darknet/{fbasename}.txt")
@@ -50,11 +50,17 @@ def process_dawn(dawn_folder: str):
         shutil.rmtree(validation_dataset_folder)
     os.mkdir(validation_dataset_folder)
 
+    test_dataset_folder = os.path.join(dawn_folder, "test-dataset")
+    if os.path.exists(test_dataset_folder):
+        shutil.rmtree(test_dataset_folder)
+    os.mkdir(test_dataset_folder)
     random.shuffle(all_files)
 
-    training = all_files[:600]
-    validation = all_files[600:]
-    print(f"# training files {len(training)}, # validation files {len(validation)}")
+    # split 501 (3*167) training, 99 (3*33) validation, 98 test
+    training = all_files[:501]
+    validation = all_files[501:501+99]
+    test = all_files[501+99:]
+    print(f"# files {len(all_files)}, # training files {len(training)}, # validation files {len(validation)}, # test files {len(test)}")
     print(f"copy training files")
     index = 0
     for file, annotation_file in training:
@@ -71,12 +77,21 @@ def process_dawn(dawn_folder: str):
         shutil.copy(file, f"{validation_dataset_folder}/{basename}.jpg")
         filter_yolo_annotations(annotation_file, f"{validation_dataset_folder}/{basename}.txt", dawn_label_map, label_map)
 
+    print(f"copy test files")
+    index = 0
+    for file, annotation_file in test:
+        index += 1
+        basename = f"image{str(index).zfill(4)}"
+        shutil.copy(file, f"{test_dataset_folder}/{basename}.jpg")
+        filter_yolo_annotations(annotation_file, f"{test_dataset_folder}/{basename}.txt", dawn_label_map, label_map)
+
     print(f"generate yolov8 dataset yaml file")
     yolo_training_dataset = os.path.join(dawn_folder, "dawn-train-dataset.yml")
     with open(yolo_training_dataset, "w") as f:
         f.write(f"path: {os.path.abspath(dawn_folder)}{os.linesep}")
         f.write(f"train: {os.path.abspath(train_dataset_folder)}{os.linesep}")
         f.write(f"val: {os.path.abspath(validation_dataset_folder)}{os.linesep}")
+        f.write(f"test: {os.path.abspath(test_dataset_folder)}{os.linesep}")
         f.write(f"names:{os.linesep}")
         f.write(f"  0: car{os.linesep}")
         f.write(f"  1: bus{os.linesep}")
@@ -87,6 +102,7 @@ def process_dawn(dawn_folder: str):
         f.write(f"path: /datasets/dawn{os.linesep}")
         f.write(f"train: /datasets/dawn/train-dataset{os.linesep}")
         f.write(f"val: /datasets/dawn/validation-dataset{os.linesep}")
+        f.write(f"test: /datasets/dawn/test-dataset{os.linesep}")
         f.write(f"names:{os.linesep}")
         f.write(f"  0: car{os.linesep}")
         f.write(f"  1: bus{os.linesep}")
