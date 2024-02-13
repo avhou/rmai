@@ -1,4 +1,4 @@
-import utils as ut
+import statutils as ut
 import mockpredictor as mp
 import pandas as pd
 import os.path
