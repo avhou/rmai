@@ -2,9 +2,14 @@ import pandas as pd
 import numpy as np
 from typing import *
 
-label_map: Dict[str, int] = {
+label_name_to_code: Dict[str, int] = {
     "car": 0,
     "bus": 1
+}
+
+label_code_to_name: Dict[str, int] = {
+    0: "car",
+    1: "bus"
 }
 
 def compute_iou(bb1, bb2):
@@ -49,48 +54,72 @@ def compute_iou(bb1, bb2):
     assert iou <= 1.0
     return iou
 
-
 def to_dict(bb_list: List) -> Dict:
-    label, x1, y1, x2, y2 = bb_list
+    x1, y1, x2, y2 = bb_list
     return {'x1': x1, 'y1': y1, 'x2': x2, 'y2': y2}
 
-def compute_ious(ground_truths: List, predictions: List, label: str, threshold: float) -> Dict:
-    # Filter by label
-    gt_for_label = [i for i in ground_truths if i[0] == label_map[label]]
-    pr_for_label = [i for i in predictions   if i[0] == label_map[label]]
+col_image, col_label, col_label_name, col_ground_truth_bb, col_best_prediction_bb, col_IoU = 'image', 'label', 'label_name', 'ground_truth_bb', 'best_prediction_bb', 'IoU'
 
-    # Convert input to dict
-    gt_dict = [to_dict(i) for i in gt_for_label]
-    pr_dict = [to_dict(i) for i in pr_for_label]
-
-    # Compute IoU's
-    ious = []
-    for ground in gt_dict:
-        for prediction in pr_dict:
-            ious.append(compute_iou(ground, prediction))
-    
-    # Filter out zero IoU's and split by threshold
-    ious = [i for i in ious if i > 0]
-    ious_infra = [i for i in ious if i < threshold]
-    ious_supra = [i for i in ious if i >= threshold]
-    
-    return {
-        'ious_infra': ious_infra,
-        'ious_supra': ious_supra 
-        }
+print(col_image)
+print(col_label)
+print(col_label_name)
+print(col_ground_truth_bb)
+print(col_best_prediction_bb)
+print(col_IoU)
 
 
+def init_data_frame(gt_data: Dict) -> pd.DataFrame:
+    df = pd.DataFrame(columns = [col_image, col_label, col_label_name, col_ground_truth_bb, col_best_prediction_bb, col_IoU])
+    for k, v in gt_data.items():
+        for pr_bb in v:
+            idx = len(df.index)
+            df.loc[idx] = k
+            df.at[idx, col_label] = pr_bb[0]
+            df.at[idx, col_label_name] = label_code_to_name[pr_bb[0]]
+            df.at[idx, col_ground_truth_bb] = pr_bb[1:]
+            df.at[idx, col_best_prediction_bb] = None
+            df.at[idx, col_IoU] = 0.0
+    return df
+
+def compute_best_predicted_bbs(pr_bbs: Dict, data_frame: pd.DataFrame) -> None:
+    for label in label_code_to_name.keys():
+        for k, v in pr_bbs.items():
+            label_match = data_frame.loc[ (data_frame[col_image] == k) & (data_frame[col_label] == label)]
+            for idx, row in label_match.iterrows():
+                best_pr_bb, max_iou = None, 0.0
+                gt_dict = to_dict(row[col_ground_truth_bb])
+                for pr_bb in v:
+                    if pr_bb[0] == label:
+                        pr_bb = pr_bb[1:]
+                        pr_dict = to_dict(pr_bb)
+                        iou = compute_iou(gt_dict, pr_dict)
+                        if iou > max_iou:
+                            best_pr_bb = pr_bb
+                            max_iou = iou
+                data_frame.at[idx, col_best_prediction_bb] = best_pr_bb
+                data_frame.at[idx, col_IoU] = max_iou
+
+# ------------------------------------------------
 # Example image: snow_storm-049.jpg
-# Expected input format
-data_gt = [[0, 903, 248, 1274, 558],[0, 246, 405, 386, 508],[0, 537, 372, 744, 529],[1, 15, 311, 163, 491]]
-data_pr = [[0, 881, 223, 1248, 512],[0, 554, 352, 733, 533],[0, 222, 384, 314, 484],[0, 44, 410, 155, 482],[1, 13, 320, 160, 485]]
+# Expected input format. To verify with Alexander.
+# ------------------------------------------------
+# Ground truth bounding boxes (with label at index 0)                
+gt_bbs = {
+    'snow_storm-049.jpg': [[0, 903, 248, 1274, 558], [0, 246, 405, 386, 508], [0, 537, 372, 744, 529], [1, 15, 311, 163, 491]],
+    'snow_storm-050.jpg': [[0, 211, 436, 391, 587], [0, 399, 425, 639, 623], [0, 0, 537, 250, 729], [0, 901, 384, 994, 471], [0, 845, 307, 938, 390], [0, 753, 381, 912, 516], [0, 588, 371, 713, 481], [0, 935, 271, 1000, 348], [1, 989, 208, 1145, 420]]
+}
+# Predicted bounding boxes (with label at index 0)
+pr_bbs = {
+    'snow_storm-049.jpg': [[0, 881, 223, 1248, 512],[0, 554, 352, 733, 533],[0, 222, 384, 314, 484],[0, 44, 410, 155, 482],[1, 13, 320, 160, 485]],
+    'snow_storm-050.jpg': [[0, 210, 436, 391, 587], [0, 205, 440, 385, 560], [0, 901, 384, 994, 471], [0, 845, 307, 938, 390], [0, 753, 381, 912, 516], [0, 588, 371, 713, 481], [0, 935, 271, 1000, 348]]
+}
 
 
-ious_car = compute_ious(data_gt, data_pr, "car", 0.5)
-ious_bus = compute_ious(data_gt, data_pr, "bus", 0.5)
+df = init_data_frame(gt_bbs)
+compute_best_predicted_bbs(pr_bbs, df)
 
-print("IoUs for label 'car'")
-print(ious_car)
+# The resulting dataframe df can now be used for further analysis
 
-print("IoU for label 'bus'")
-print(ious_bus)
+print("\n")
+print(df)
+
