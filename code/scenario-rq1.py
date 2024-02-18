@@ -13,7 +13,7 @@ def do_scenario_rq1(dawn_folder: str, pre_trained_model: str):
     we can then use this model to do predictions
     """
 
-    model = YOLO("yolov8.yaml").load(pre_trained_model)
+    model = YOLO(pre_trained_model)
     predict.do_predict(model, dawn_folder, 'scenario-rq1.csv')
 
 

@@ -18,7 +18,7 @@ def do_base_scenario(dawn_folder: str):
     :return: nothing
     """
 
-    model = YOLO("yolov8n.pt")
+    model = YOLO("yolov8l.pt")
     predict.do_predict(model, dawn_folder, 'base-scenario.csv')
 
     # print("training scenario1")
