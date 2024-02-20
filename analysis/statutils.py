@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 
 from scipy import stats
 from statsmodels.stats.contingency_tables import mcnemar
@@ -54,6 +55,10 @@ def check_outliers_by_box(data: pd.DataFrame, label: str) -> None:
     sns.boxplot(data, y=label + "_error_rate")
     plt.show()
 
+def mean_error_rate(data: pd.DataFrame, label: str):
+    error_rates = data[label + "_error_rate"].to_numpy()
+    return error_rates.mean()
+
 def paired_samples_ttest(data_A: pd.DataFrame, data_B: pd.DataFrame, label: str): 
     error_rates_A = data_A[label + "_error_rate"].to_numpy()
     error_rates_B = data_B[label + "_error_rate"].to_numpy()
@@ -66,4 +71,24 @@ def mc_nemar_test(data_A: pd.DataFrame, data_B: pd.DataFrame, label: str):
     incomplete_detect_B = len(data_B) - complete_detect_B
     data = [[complete_detect_A, incomplete_detect_A],
             [complete_detect_B, incomplete_detect_B]]
-    return mcnemar(data, exact = False)
+    return mcnemar(data, exact = True)
+
+
+def t_test(data_A, data_B, label: str, alternative='both-sided'):
+    error_rates_A = data_A[label + "_error_rate"].to_numpy()
+    error_rates_B = data_B[label + "_error_rate"].to_numpy()
+
+    _, double_p = stats.ttest_rel(error_rates_A, error_rates_B)
+    if alternative == 'both-sided':
+        pval = double_p
+    elif alternative == 'greater':
+        if np.mean(error_rates_A) > np.mean(error_rates_B):
+            pval = double_p/2.
+        else:
+            pval = 1.0 - double_p/2.
+    elif alternative == 'less':
+        if np.mean(error_rates_A) < np.mean(error_rates_B):
+            pval = double_p/2.
+        else:
+            pval = 1.0 - double_p/2.
+    return pval
