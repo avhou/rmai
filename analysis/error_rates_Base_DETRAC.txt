@@ -16,6 +16,8 @@ H_a: mean(error rate) for model DETRAC < mean(error rate) for model Base
 Paired sample t-test (one-tailed) 
 	 car p-value: 0.109 
 	 bus p-value: 0.0 
+
 Mc Nemar for car 
-	 0.856Mc Nemar for bus 
-	 0.0
+	 0.856 
+Mc Nemar for bus 
+	 0.0 

@@ -16,6 +16,8 @@ H_a: mean(error rate) for model DAWN < mean(error rate) for model DETRAC
 Paired sample t-test (one-tailed) 
 	 car p-value: 0.14 
 	 bus p-value: 0.018 
+
 Mc Nemar for car 
-	 0.225Mc Nemar for bus 
-	 0.089
+	 0.225 
+Mc Nemar for bus 
+	 0.089 

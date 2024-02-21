@@ -16,6 +16,8 @@ H_a: mean(error rate) for model DAWN < mean(error rate) for model Base
 Paired sample t-test (one-tailed) 
 	 car p-value: 0.011 
 	 bus p-value: 0.0 
+
 Mc Nemar for car 
-	 0.346Mc Nemar for bus 
-	 0.0
+	 0.346 
+Mc Nemar for bus 
+	 0.0 

@@ -40,10 +40,11 @@ def compare_error_rates(model_A: str, model_B: str, labelled_error_rates: dict) 
         # ---------------------------
         mcnemar_car = ut.mc_nemar_test(model_A_predictions, model_B_predictions, "car")
         mcnemar_bus = ut.mc_nemar_test(model_A_predictions, model_B_predictions, "bus")
+        report_file.write("\n")
         report_file.write(f"Mc Nemar for car \n")
-        report_file.write(f"\t {round(mcnemar_car.pvalue, 3)}")
+        report_file.write(f"\t {round(mcnemar_car.pvalue, 3)} \n")
         report_file.write(f"Mc Nemar for bus \n")
-        report_file.write(f"\t {round(mcnemar_bus.pvalue, 3)}")
+        report_file.write(f"\t {round(mcnemar_bus.pvalue, 3)} \n")
 
 def compare_ious(model_A: str, model_B: str, labelled_ious: dict) -> None:
     with open(f"ious_{model_A}_{model_B}.txt", "w") as report_file:
