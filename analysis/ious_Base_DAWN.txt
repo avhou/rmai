@@ -1,0 +1,7 @@
+
+H_a: mean(IoU) for model DAWN != mean(IoU) for model Base 
+Paired sample t-test (two-tailed) 
+	 car t-statistic: -11.265 
+	 car p-value: 0.0 
+	 bus t-statistic: 1.998 
+	 bus p-value: 0.063 

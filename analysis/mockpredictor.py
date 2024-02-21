@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import statutils as ut
+import errorratestats as ut
 
 def predict(seed: pd.DataFrame, label: str, factor: float) -> pd.DataFrame:
     ground_truth_col = label + '_ground_truth'

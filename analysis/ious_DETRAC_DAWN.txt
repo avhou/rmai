@@ -1,0 +1,7 @@
+
+H_a: mean(IoU) for model DAWN != mean(IoU) for model DETRAC 
+Paired sample t-test (two-tailed) 
+	 car t-statistic: -43.369 
+	 car p-value: 0.0 
+	 bus t-statistic: -2.609 
+	 bus p-value: 0.019 

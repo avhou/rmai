@@ -1,0 +1,21 @@
+MODEL Base 
+	Mean error rate for car: 0.124 
+	Mean error rate for bus: 0.017 
+MODEL DETRAC 
+	Mean error rate for car: 0.064 
+	Mean error rate for bus: -0.313 
+
+H_a: mean(error rate) for model DETRAC != mean(error rate) for model Base 
+Paired sample t-test (two-tailed) 
+	 car t-statistic: 1.242 
+	 car p-value: 0.217 
+	 bus t-statistic: 5.879 
+	 bus p-value: 0.0 
+
+H_a: mean(error rate) for model DETRAC < mean(error rate) for model Base 
+Paired sample t-test (one-tailed) 
+	 car p-value: 0.109 
+	 bus p-value: 0.0 
+Mc Nemar for car 
+	 0.856Mc Nemar for bus 
+	 0.0

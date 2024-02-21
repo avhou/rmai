@@ -1,0 +1,21 @@
+MODEL DETRAC 
+	Mean error rate for car: 0.064 
+	Mean error rate for bus: -0.313 
+MODEL DAWN 
+	Mean error rate for car: -0.005 
+	Mean error rate for bus: -0.47 
+
+H_a: mean(error rate) for model DAWN != mean(error rate) for model DETRAC 
+Paired sample t-test (two-tailed) 
+	 car t-statistic: 1.086 
+	 car p-value: 0.28 
+	 bus t-statistic: 2.125 
+	 bus p-value: 0.036 
+
+H_a: mean(error rate) for model DAWN < mean(error rate) for model DETRAC 
+Paired sample t-test (one-tailed) 
+	 car p-value: 0.14 
+	 bus p-value: 0.018 
+Mc Nemar for car 
+	 0.225Mc Nemar for bus 
+	 0.089

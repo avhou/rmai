@@ -1,0 +1,21 @@
+MODEL Base 
+	Mean error rate for car: 0.124 
+	Mean error rate for bus: 0.017 
+MODEL DAWN 
+	Mean error rate for car: -0.005 
+	Mean error rate for bus: -0.47 
+
+H_a: mean(error rate) for model DAWN != mean(error rate) for model Base 
+Paired sample t-test (two-tailed) 
+	 car t-statistic: 2.344 
+	 car p-value: 0.021 
+	 bus t-statistic: 9.097 
+	 bus p-value: 0.0 
+
+H_a: mean(error rate) for model DAWN < mean(error rate) for model Base 
+Paired sample t-test (one-tailed) 
+	 car p-value: 0.011 
+	 bus p-value: 0.0 
+Mc Nemar for car 
+	 0.346Mc Nemar for bus 
+	 0.0
