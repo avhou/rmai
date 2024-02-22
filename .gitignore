@@ -30,3 +30,6 @@ proposal/researchProposal.run.xml
 proposal/researchProposal.synctex.gz
 proposal/auto
 .DS_Store
+code/yolov8l.pt
+report/report.run.xml
+report/report.bcf
