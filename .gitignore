@@ -33,3 +33,4 @@ proposal/auto
 code/yolov8l.pt
 report/report.run.xml
 report/report.bcf
+report/report.iml
