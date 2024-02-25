@@ -1,0 +1,26 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  YOLOv8-based Analysis of Image Augmentation Techniques for
+  Vehicle Detection in Adverse Weather Conditions
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Alexander
+    family-names: Van Hecke
+    affiliation: Open Universiteit Nederland
+  - given-names: Lefever
+    family-names: Frederik
+    affiliation: Open Universiteit Nederland
+repository-code: 'https://github.com/avhou/rmai'
+abstract: >-
+  This work of investigation is part of a course assignment.
+  The course is titled 'Research Methods in Artificial
+  Intelligence' and taught at the Open Universiteit
+  Nederland.
+license: CC0-1.0
+date-released: '2024-02-26'
