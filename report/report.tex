@@ -122,8 +122,8 @@
 		\toprule
 		\textbf{research question} & \textbf{training and validation} & \textbf{test} \\
 		\midrule
-		RQ1 & UA-DETRAC (thematically augmented images) & DAWN (adverse weather images) \\
-		RQ2 & DAWN (adverse weather images) & DAWN (adverse weather images) \\
+		RQ\ref{rq1} & UA-DETRAC (thematically augmented images) & DAWN (adverse weather images) \\
+		RQ\ref{rq2} & DAWN (adverse weather images) & DAWN (adverse weather images) \\
 		\bottomrule
 	\end{tabular}
 	\caption{setup RQ \ref{rq1}}
@@ -162,13 +162,13 @@
 	
 	\begin{table}[H]
 		\centering
-		\begin{tabular}{ccrrp{1.5in}}
+		\begin{tabular}{lccrrp{1.5in}}
 			\toprule
-			\textbf{$H_0$} & \textbf{$H_a$} & Car p-value & Bus p-value \\
+			research question & \textbf{$H_0$} & \textbf{$H_a$} & Car p-value & Bus p-value \\
 			\midrule
-			$\mu\,\textsubscript{DAWN} = \mu\,\textsubscript{Baseline}$   & $\mu\,\textsubscript{DAWN} < \mu\,\textsubscript{Baseline}$   & 0.011 & 0.0   \\
-			$\mu\,\textsubscript{DETRAC} = \mu\,\textsubscript{Baseline}$ & $\mu\,\textsubscript{DETRAC} < \mu\,\textsubscript{Baseline}$ &  0.109 & 0.0 \\
-			$\mu\,\textsubscript{DAWN} = \mu\,\textsubscript{DETRAC}$ & $\mu\,\textsubscript{DAWN} < \mu\,\textsubscript{DETRAC}$ &  0.14  & 0.018 \\
+			RQ\ref{rq1} & $\mu\,\textsubscript{DETRAC} = \mu\,\textsubscript{Baseline}$ & $\mu\,\textsubscript{DETRAC} < \mu\,\textsubscript{Baseline}$ &  0.109 & $< 0.001$ \\
+			RQ\ref{rq2} & $\mu\,\textsubscript{DAWN} = \mu\,\textsubscript{Baseline}$   & $\mu\,\textsubscript{DAWN} < \mu\,\textsubscript{Baseline}$   & 0.011 & $< 0.001$   \\
+			RQ\ref{rq3} & $\mu\,\textsubscript{DAWN} = \mu\,\textsubscript{DETRAC}$ & $\mu\,\textsubscript{DAWN} < \mu\,\textsubscript{DETRAC}$ &  0.14  & 0.018 \\
 			\bottomrule
 		\end{tabular}
 		\caption{One-tailed paired t-tests for mean error rates.}
@@ -193,14 +193,14 @@
 	
 	\begin{table}[H]
 	\centering
-	\begin{tabular}{ccrrrrp{1.5in}}
+	\begin{tabular}{lccrrrrp{1.5in}}
 		\toprule
-		\textbf{$H_0$} & \textbf{$H_a$} &  \multicolumn{2}{c}{Car} &  \multicolumn{2}{c}{Bus}  \\
-		{}             & {}             & t-value  & p-value       & t-value & p-value \\
+		research question & \textbf{$H_0$} & \textbf{$H_a$} &  \multicolumn{2}{c}{Car} &  \multicolumn{2}{c}{Bus}  \\
+		{} & {}             & {}             & t-value  & p-value       & t-value & p-value \\
 		\midrule
-		$\mu\,\textsubscript{DAWN} = \mu\,\textsubscript{Baseline}$   & $\mu\,\textsubscript{DAWN} \neq \mu\,\textsubscript{Baseline}$   & -11.265 & 0.0 & 1.998 & 0.063  \\
-		$\mu\,\textsubscript{DETRAC} = \mu\,\textsubscript{Baseline}$ & $\mu\,\textsubscript{DETRAC} \neq \mu\,\textsubscript{Baseline}$ & 26.471 & 0.0 & 4.616 & 0.0 \\
-		$\mu\,\textsubscript{DAWN} = \mu\,\textsubscript{DETRAC}$ & $\mu\,\textsubscript{DAWN} \neq \mu\,\textsubscript{DETRAC}$ & -43.369  & 0.0 & -2.609 & 0.019 \\
+		RQ\ref{rq1} & $\mu\,\textsubscript{DETRAC} = \mu\,\textsubscript{Baseline}$ & $\mu\,\textsubscript{DETRAC} \neq \mu\,\textsubscript{Baseline}$ & 26.471 & $< 0.001$ & 4.616 & $< 0.001$ \\
+		RQ\ref{rq2} & $\mu\,\textsubscript{DAWN} = \mu\,\textsubscript{Baseline}$   & $\mu\,\textsubscript{DAWN} \neq \mu\,\textsubscript{Baseline}$   & -11.265 & $< 0.001$ & 1.998 & 0.063  \\
+		RQ\ref{rq3} & $\mu\,\textsubscript{DAWN} = \mu\,\textsubscript{DETRAC}$ & $\mu\,\textsubscript{DAWN} \neq \mu\,\textsubscript{DETRAC}$ & -43.369  & $< 0.001$ & -2.609 & 0.019 \\
 		\bottomrule
 	\end{tabular}
 	\caption{Two-tailed paired t-tests for mean IoU.}
